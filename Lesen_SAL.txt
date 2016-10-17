@@ -1,0 +1,33 @@
+
+==========================================
+Sistem Affiliate Lite Versi 2.6.0
+==========================================
+
+Lesen Penggunaan: Untuk Kegunaan Peribadi Anda Sahaja
+
+==========================================
+#
+# Nama Sistem: Sistem Affiliate (Lite)
+# Penerbit: Amirol Zolkifli
+# Web Asal: www.sistemaffiliate.com
+# Versi: 2.6.0
+# Kemaskini Terakhir: 29 July 2013
+#
+# Sistem ini telah dihasilkan, dioleh dan diterbitkan oleh SistemAffiliate.com.
+# Anda tidak dibenarkan melakukan sebarang perubahan pada sistem tanpa
+# mendapat kebenaran daripada pihak penerbit.
+#
+# Segala SOKONGAN TERHADAP SISTEM hanya diberikan JIKA anda membuat
+# membuat PEMBELIAN SECARA TERUS dari www.sistemaffiliate.com. Sokongan
+# hanya diberikan apabila anda dapat menyatakan RESIT PEMBELIAN terhadap
+# sistem ini yang diterbitkan oleh pihak www.sistemaffiliate.com
+#
+# Pihak penerbit tidak akan bertanggungjawab atas segala kerosakan,
+# kecacatan, permasalahan, kemalangan atau apa jua perkara buruk yang
+# menimpa sebelum, semasa atau selepas pihak anda menggunakan sistem ini
+# pada hosting, server dan laman web anda.
+#
+# Segala tindakan penggunaan sistem ini adalah 100% dibawah tanggungjawab
+# anda sendiri.
+#
+==========================================

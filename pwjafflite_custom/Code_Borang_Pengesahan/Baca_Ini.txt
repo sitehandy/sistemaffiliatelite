@@ -1,0 +1,17 @@
+/*
+Script ini diolah dan diedit oleh Amirol Zolkifli. Edaran sah
+hanya menerusi www.webjualan.com dan www.sistemaffiliate.com sahaja.
+Tiada mana - mana bahagian olahan pada script ini dibenarkan di salin atau
+ditiru.
+
+Penggunaan script ini adalah dibawah tanggungan anda sendiri. Pihak penyedia
+script tidak akan bertanggungjawab untuk segala musibah atau masalah
+yang melanda ketika anda menggunakan script ini.
+*/
+
+
+==========================================
+Arahan Penggunaan Kod Borang
+==========================================
+
+Code borang ini adalah salinan daripada code yang disediakan di dalam HALAMAN Admin, Menu --> Konfigurasi -- KOd Borang

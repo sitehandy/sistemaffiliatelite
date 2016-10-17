@@ -1,0 +1,37 @@
+/*
+Script ini diolah dan diedit oleh Amirol Zolkifli. Edaran sah
+hanya menerusi www.webjualan.com dan www.sistemaffiliate.com sahaja.
+Tiada mana - mana bahagian olahan pada script ini dibenarkan di salin atau
+ditiru.
+
+Penggunaan script ini adalah dibawah tanggungan anda sendiri. Pihak penyedia
+script tidak akan bertanggungjawab untuk segala musibah atau masalah
+yang melanda ketika anda menggunakan script ini.
+*/
+
+
+==========================================
+Arahan Penggunaan Fail pwjafflite_ubah.php
+==========================================
+
+1. Buka fail pwjafflite_ubah.php ini dan ubah konfigurasi bagi data berikut:
+
+//Masukkan URL Redirect untuk pelanggan layari selepas pembayaran dibuat.
+$domainredirect_custom = "http://www.sistemaffiliate.com";
+
+//Nama ITEM DAN Harga Item
+$jumlahpembayaran = "Ebook A - RM2.00";
+
+//Nama Kaedah Transaksi
+$kaedahpembayaran = "Borang";
+
+//Komisyen Untuk Agen Affiliate
+$komisyenaffiliate = "1.00";
+
+
+2. RENAME fail pwjafflite_ubah.php kepada satu nama unik seperti abcasdlkj123.php
+
+
+3. REDIRECT sistem pembayaran (borang / paypal) kepada URL fail pwjafflite_ubah.php yang telah direname untuk membolehkan sistem menghasilkan komisyen.
+
+Contoh: http://www.sistemaffiliate.com/pwjafflite_ubah.php

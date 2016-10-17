@@ -1,0 +1,100 @@
+<form name="borangpengesahan" method="post" action="pwjafflite_form_submitpayment.php">
+<div align="center">
+<table width="550" border="0" cellspacing="1" cellpadding="5" style="border-color:#CCCCCC; border-style:solid; border-width:5px;">
+<tr>
+<td bgcolor="#E6E6E6" colspan="3" style="font-family:verdana; font-size:20px;"><div align="center"><b>Borang Pengesahan Pembayaran</b></font></div></td>
+</tr>
+<tr>
+<td colspan="3" bgcolor="#F4F4F4" style="font-family:verdana; font-size:12px; text-align:left"><p>Sila isikan borang dibawah lengkap dengan data yang benar dan sah sahaja. Sebarang maklumat palsu adalah dilarang sama sekali. IP anda akan direkod untuk tujuan keselamatan.</span></p>
+<p><font color="#FF0000">*</font> menandakan ruangan tersebut WAJIB di isi.</p></td>
+</tr>
+<tr>
+<td bgcolor="#E6E6E6" colspan="3">&nbsp;</td>
+</tr>
+<tr>
+<td bgcolor="#F4F4F4" width="180" style="font-family:verdana; font-size:12px; text-align:left">Nama Penuh Anda</td>
+<td bgcolor="#F4F4F4"><center><b>:</b></center></td>
+<td bgcolor="#F4F4F4" style="font-family:verdana; font-size:12px; text-align:left"><input name="namapembeli" type="text" size="40" maxlength="100">
+<font color="#FF0000">*</font></td>
+</tr>
+<tr>
+<td bgcolor="#E6E6E6" width="180" style="font-family:verdana; font-size:12px; text-align:left">Alamat Email Anda</td>
+<td bgcolor="#E6E6E6" style="font-family:verdana; font-size:12px; text-align:left"><center><b>:</b></center></td>
+<td bgcolor="#E6E6E6" style="font-family:verdana; font-size:12px; text-align:left"><input name="emailpembeli" type="text" size="40" maxlength="100">
+<font color="#FF0000">*</font></td>
+</tr>
+<tr>
+<td bgcolor="#F4F4F4" width="180" style="font-family:verdana; font-size:12px; text-align:left">No.Telefon Anda</td>
+<td bgcolor="#F4F4F4" style="font-family:verdana; font-size:12px; text-align:left"><center><b>:</b></center></td>
+<td bgcolor="#F4F4F4" style="font-family:verdana; font-size:12px; text-align:left"><input name="telefonpembeli" type="text" size="40" maxlength="100">
+<font color="#FF0000">*</font></td>
+</tr>
+<tr>
+<td bgcolor="#E6E6E6" width="180" style="font-family:verdana; font-size:12px; text-align:left"><p>Alamat Surat Menyurat<br />
+(Jika Perlu)</p>	</td>
+<td bgcolor="#E6E6E6" style="font-family:verdana; font-size:12px; text-align:left"><center><b>:</b></center></td>
+<td bgcolor="#E6E6E6" style="font-family:verdana; font-size:12px; text-align:left"><textarea name="alamatpembeli" cols="35" rows="5"></textarea></td>
+</tr>
+<tr>
+<td bgcolor="#F4F4F4" width="180" style="font-family:verdana; font-size:12px; text-align:left">Produk &amp; Pembayaran</td>
+<td bgcolor="#F4F4F4" style="font-family:verdana; font-size:12px; text-align:left"><center><b>:</b></center></td>
+<td bgcolor="#F4F4F4" style="font-family:verdana; font-size:12px; text-align:left"><font color="#FF0000">
+<select name="jumlahpembayaran" id="jumlahpembayaran">
+<option selected="selected">Sila Pilih</option>
+<option>Produk A - RM50.00</option>
+<option>Produk B - RM80.00</option>
+<option>Produk C - RM100.00</option>
+</select>
+*</font></td>
+</tr>
+<tr>
+<td bgcolor="#E6E6E6" width="180" style="font-family:verdana; font-size:12px; text-align:left">Kaedah Pembayaran</td>
+<td bgcolor="#E6E6E6" style="font-family:verdana; font-size:12px; text-align:left"><center><b>:</b></center></td>
+<td bgcolor="#E6E6E6" style="font-family:verdana; font-size:12px; text-align:left"><select name="kaedahpembayaran">
+<option selected="selected">Sila Pilih</option>
+<option>Bank - Maybank</option>
+<option>Bank - CIMB</option>
+<option>Lain - Lain</option>
+</select>
+<font color="#FF0000">*</font></td>
+</tr>
+<tr>
+<td bgcolor="#F4F4F4" width="180" style="font-family:verdana; font-size:12px; text-align:left">Tarikh Pembayaran</td>
+<td bgcolor="#F4F4F4" style="font-family:verdana; font-size:12px; text-align:left"><center><b>:</b></center></td>
+<td bgcolor="#F4F4F4" style="font-family:verdana; font-size:12px; text-align:left"><input name="tarikhpembayaran" type="text" value="DD/MM/YYYY" size="40" maxlength="100">
+<font color="#FF0000">*</font></td>
+</tr>
+<tr>
+<td bgcolor="#E6E6E6" width="180" style="font-family:verdana; font-size:12px; text-align:left">Masa Pembayaran</td>
+<td bgcolor="#E6E6E6" style="font-family:verdana; font-size:12px; text-align:left"><center><b>:</b></center></td>
+<td bgcolor="#E6E6E6" style="font-family:verdana; font-size:12px; text-align:left"><input name="masapembayaran" type="text" value="HH:MM" size="40" maxlength="100">
+<font color="#FF0000">*</font></td>
+</tr>
+<tr>
+<td bgcolor="#F4F4F4" width="180" style="font-family:verdana; font-size:12px; text-align:left">Bukti Transaksi Pembayaran</td>
+<td bgcolor="#F4F4F4" style="font-family:verdana; font-size:12px; text-align:left"><center><b>:</b></center></td>
+<td bgcolor="#F4F4F4" style="font-family:verdana; font-size:12px; text-align:left"><textarea name="buktipembayaran" cols="35" rows="5"></textarea>
+<font color="#FF0000">*</font></td>
+</tr>
+<tr>
+<td bgcolor="#F4F4F4" style="font-family:verdana; font-size:12px; text-align:left">Nota Tambahan (jika perlu)</td>
+<td bgcolor="#F4F4F4" style="font-family:verdana; font-size:12px; text-align:left"><center>
+<b>:</b>
+</center></td>
+<td bgcolor="#F4F4F4" style="font-family:verdana; font-size:12px; text-align:left"><textarea name="notatambahan" cols="35" rows="5"></textarea></td>
+</tr>
+<tr>
+<td bgcolor="#E6E6E6" style="font-family:verdana; font-size:12px; text-align:left">Salin Semula Kod Sekuriti</td>
+<td bgcolor="#E6E6E6" style="font-family:verdana; font-size:12px; text-align:left"><div align="center"><b>:</b></div></td>
+<td bgcolor="#E6E6E6" style="font-family:verdana; font-size:12px; text-align:left"><img id="imejcaptcha" src="pwjafflite_form_sistemcaptcha.php" /> = <input id="nomborcaptcha" type="text" name="nomborcaptcha" value="" maxlength="10" size="15" /></td>
+</tr>
+<tr>
+<td bgcolor="#F4F4F4" colspan="3" style="font-family:verdana; font-size:12px; text-align:left">&nbsp;</td>
+</tr>
+<tr>
+<td bgcolor="#E6E6E6" colspan="3" style="font-family:verdana; font-size:12px; text-align:left"><div align="center">
+<input name="submit" type="submit" value="Hantar Borang">&nbsp;&nbsp;<input name="reset" type="reset" value="Isi Semula"></div></td>
+</tr>
+</table>
+</div>
+</form>

@@ -1,0 +1,316 @@
+p, h1, h2, h3	{
+	margin:0px;
+}
+body {
+	margin:0px auto;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	font-style: normal;
+	line-height: 1.5;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	margin:0px;
+	text-align:left;
+}
+h1	{
+	font-size:20px;
+}
+#container	{
+	width:100%;
+	margin:auto;
+}
+#SA_header	{
+	background-image:url(../pwjafflite_images/SA_headerbg.png);
+	background-position:center;
+	background-repeat:repeat-x;
+	height:80px;
+}
+#SA_header_logo {
+		background-image:url(../pwjafflite_images/SA_headerlogo.png);
+		float: left;
+		margin: 0 10px 0 0;
+	}
+		#SA_header_logo a:link, #SA_header_logo a:visited {
+			display: block;
+			width: 300px;
+			height: 80px;
+		}
+			#SA_header_logo a:link span, #SA_header_logo a:visited span {
+				background: url(../pwjafflite_images/SA_headerlogo.png) no-repeat 0 0;
+			}
+
+.ir { 
+	position: relative;
+	overflow: hidden;
+}
+.ir span {
+	position: absolute; 
+	width: 100%; 
+	height: 100%; 
+	left: 0; 
+	top: 0; 
+	text-indent: -1000em; 
+}
+#SA_header_title {
+	float: right;
+	color:#FFFFFF;
+	padding-right:30px;
+	line-height:80px;
+	text-align:right;
+}		
+#SA_top_navigation	{
+	margin:0px auto;
+}
+#SA_content_area	{
+	margin:auto;
+	padding:15px 15px 15px 15px;
+}
+#SA_footer	{
+	background-image:url(../pwjafflite_images/SA_footerbg.png);
+	background-position:center;
+	background-repeat:repeat-x;
+	text-align:center;
+	height:40px;
+	line-height:40px;
+	color:#FFFFFF;
+	font-size:11px;
+}
+	#SA_footer a:link, #SA_footer a:visited	{
+		color:#FFFFFF;
+		text-decoration:none;
+	}
+	#SA_footer a:hover {
+		color:#FFCC00;
+		text-decoration:underline;
+	}
+
+.SA_login_box	{
+	width:400px;
+	border:solid;
+	border-width:1px;
+	border-color:#999999;
+	padding:0px;
+	margin:auto;
+}
+.SA_login_box_header	{
+	background-image:url(../pwjafflite_images/SA_yellowheadbg.png);
+	background-position:center;
+	background-repeat:repeat-x;
+	height:32px;
+	text-align:center;
+	font-weight:bold;
+	font-size:11pt;
+	color:#000099;
+	line-height:normal;
+}
+.SA_login_box_row1	{
+	background-color:#efefef;
+	font-weight:normal;
+	font-size:10pt;
+	color:#000000;
+	padding-left:10px;
+	padding-right:10px;
+	height:30px;
+}
+.SA_login_box_row2	{
+	background-color:#e0e0e0;
+	font-weight:normal;
+	font-size:10pt;
+	color:#000000;
+	padding-left:10px;
+	padding-right:10px;
+	height:30px;
+}
+.SA_login_box_input	{
+	border:solid;
+	border-width:2px;
+	border-color:#333333;
+	background-color:#FFFF33;
+	font-weight:normal;
+	font-size:10pt;
+	color:#000000;
+}
+.SA_login_button	{
+	border:solid;
+	border-width:2px;
+	border-color:#333333;
+	background-color:#E8E8E8;
+	font-weight:normal;
+	font-size:10pt;
+	font-weight:bold;
+	color:#000000;
+	text-align:center;
+}
+.SA_error_box	{
+	width:400px;
+	border:solid;
+	border-width:1px;
+	border-color:#FF0000;
+	background-color:#FFCCFF;
+	color:#FF0000;	
+	text-align:center;	
+	padding-left:10px;
+	padding-right:10px;
+	margin:auto;
+}
+.SA_success_box	{
+	width:400px;
+	border:solid;
+	border-width:1px;
+	border-color:#006600;
+	background-color:#CCFFFF;
+	color:#006600;
+	text-align:center;	
+	padding-left:10px;
+	padding-right:10px;
+	margin:auto;
+}
+.SA_norecord_box	{
+	width:400px;
+	border:solid;
+	border-width:1px;
+	border-color:#FF0000;
+	background-color:#FFFFCC;
+	color:#FF0000;
+	text-align:center;	
+	padding-left:10px;
+	padding-right:10px;
+	margin:auto;
+}
+.SA_adminarea_greeting	{
+	width:600px;
+	border:solid;
+	border-width:1px;
+	border-color:#999999;
+	padding:0px;
+	margin:auto;
+}
+.SA_adminarea_greeting_header	{
+	background-image:url(../pwjafflite_images/SA_yellowheadbg.png);
+	background-position:center;
+	background-repeat:repeat-x;
+	height:32px;
+	text-align:center;
+	font-weight:bold;
+	font-size:10pt;
+	color:#000099;
+	line-height:normal;
+}
+.SA_adminarea_greeting_row1	{
+	background-color:#efefef;
+	font-weight:normal;
+	font-size:10pt;
+	color:#000000;
+	padding-left:10px;
+	padding-right:10px;
+}
+.SA_adminarea_statisticbox	{
+	width:600px;
+	border:solid;
+	border-width:1px;
+	border-color:#999999;
+	padding:0px;
+	margin:auto;
+}
+.SA_adminarea_statisticbox_header	{
+	background-image:url(../pwjafflite_images/SA_yellowheadbg.png);
+	background-position:center;
+	background-repeat:repeat-x;
+	height:32px;
+	text-align:center;
+	font-weight:bold;
+	font-size:10pt;
+	color:#000099;
+	line-height:normal;
+}
+.SA_adminarea_statisticbox_row1	{
+	background-color:#efefef;
+	font-weight:normal;
+	font-size:10pt;
+	color:#000000;
+	padding-left:10px;
+	padding-right:10px;
+}
+.SA_adminarea_statisticbox_row2	{
+	background-color:#e0e0e0;
+	font-weight:normal;
+	font-size:10pt;
+	color:#000000;
+	padding-left:10px;
+	padding-right:10px;
+}
+.SA_general_table	{
+	border:solid;
+	border-width:1px;
+	border-color:#999999;
+	padding:0px;
+	margin:auto;
+}
+.SA_general_table_header	{
+	background-image:url(../pwjafflite_images/SA_yellowheadbg.png);
+	background-position:center;
+	background-repeat:repeat-x;
+	height:32px;
+	text-align:center;
+	font-weight:bold;
+	font-size:10pt;
+	color:#000099;
+	padding-left:10px;
+	padding-right:10px;
+	line-height:normal;
+}
+.SA_general_table_row1	{
+	background-color:#efefef;
+	font-weight:normal;
+	font-size:10pt;
+	color:#000000;
+	padding-left:10px;
+	padding-right:10px;
+}
+.SA_general_table_row2	{
+	background-color:#e0e0e0;
+	font-weight:normal;
+	font-size:10pt;
+	color:#000000;
+	padding-left:10px;
+	padding-right:10px;
+}
+.SA_details_table	{
+	border:solid;
+	border-width:1px;
+	border-color:#999999;
+	padding:0px;
+	margin:auto;
+	width:100%;
+}
+.SA_details_table_header	{
+	background-image:url(../pwjafflite_images/SA_yellowheadbg.png);
+	background-position:center;
+	background-repeat:repeat-x;
+	height:32px;
+	text-align:center;
+	font-weight:bold;
+	font-size:8pt;
+	color:#000099;
+	padding-left:10px;
+	padding-right:10px;
+	line-height:normal;
+}
+.SA_details_table_row1	{
+	background-color:#efefef;
+	font-weight:normal;
+	font-size:8pt;
+	color:#000000;
+	padding-left:10px;
+	padding-right:10px;
+}
+.SA_details_table_row2	{
+	background-color:#e0e0e0;
+	font-weight:normal;
+	font-size:8pt;
+	color:#000000;
+	padding-left:10px;
+	padding-right:10px;
+}

@@ -1,0 +1,82 @@
+/*
+Script ini diolah dan diedit oleh Amirol Zolkifli. Edaran sah
+hanya menerusi www.webjualan.com dan www.sistemaffiliate.com sahaja.
+Tiada mana - mana bahagian olahan pada script ini dibenarkan di salin atau
+ditiru.
+
+Penggunaan script ini adalah dibawah tanggungan anda sendiri. Pihak penyedia
+script tidak akan bertanggungjawab untuk segala musibah atau masalah
+yang melanda ketika anda menggunakan script ini.
+*/
+
+
+==========================================
+Arahan Penggunaan PPL
+==========================================
+
+1. Masukkan code tracking affiliate pada landingpage anda. Letakkan dibahagian paling atas code laman web jualan anda.
+
+2. RENAME nama fail pwjafflite_ppl.php kepada nama yang unik sebagai contoh: rahsiaXyz123cCD.php
+
+3. SET nilai komisyen di dalam fail pwjafflite_komisyen_ppl.php (FAIL INI JANGAN DIRENAME)
+
+4. Masukkan URL ke fail pwjafflite_ppl.php pada konfigurasi THANK YOU PAGE sistem autoresponder yang anda gunakan.
+
+5. Jangan lupa AKTIFKAN fungsi FORWARD DATA yang disediakan oleh sistem autoresponder untuk memboleh data seperti nama prospek dan email didaftarkan ke dalam sistem affiliate.
+
+Contoh: http://www.sistemaffiliate.com/rahsiaXyz123cCD.php
+
+6. Tetapkan halaman REDIRECT yang pelawat akan tiba selepas mereka melalui link penghasil komisyen di dalam setting ruang admin.
+
+
+==========================================
+NOTA - PPL Aweber & Getresponse
+==========================================
+
+Jika fail PPL tidak berfungsi / tidak mengkreditkan komisyen selepas SATU (1) rekod, ini adalah disebabkan fail PPL telah disetkan untuk menerima SATU (1)
+alamat email sahaja.
+
+Anda perlu menggunakan alamat email yang lain untuk percubaan yang kedua dan seterusnya bagi membolehkan komisyen direkod
+
+
+==========================================
+NOTA - PPL Custom
+==========================================
+
+Jika fail PPL tidak berfungsi / tidak mengkreditkan komisyen selepas SATU (1) rekod, ini adalah disebabkan fail PPL telah disetkan untuk menerima SATU (1) 
+alamat IP sahaja.
+
+Anda perlu menggunakan PROXY untuk percubaan yang kedua dan seterusnya bagi membolehkan komisyen direkod ATAU meminta sahabat anda
+melakukan uji cuba.
+
+
+Sekiranya anda tidak mahu menggunakan fungsi keselamatan ini, sila pastikan
+konfigurasi penetapan $duplikasikomisyen haruslah diset dengan 1 iaitu seperti
+berikut:
+
+
+$duplikasikomisyen = 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
