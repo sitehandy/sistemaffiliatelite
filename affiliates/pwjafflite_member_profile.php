@@ -18,7 +18,8 @@ include 'header.php';
 
   
 $getpassword    = $_POST['password'];
-$userpassword   = preg_replace('/[^a-zA-Z0-9_]/', '',$getpassword);
+$userpassword   = $getpassword;
+//preg_replace('/[^a-zA-Z0-9_]/', '',$getpassword);
  
 
 // Semak update profile

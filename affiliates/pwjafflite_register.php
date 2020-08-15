@@ -19,7 +19,9 @@ $getusername    = $_POST['ausername'];
 $username       = preg_replace('/[^a-zA-Z0-9_]/', '',$getusername);
 
 $getpassword    = $_POST['apassword'];
-$userpassword   = preg_replace('/[^a-zA-Z0-9_]/', '',$getpassword);
+$userpassword   = $getpassword;
+
+//preg_replace('/[^a-zA-Z0-9_]/', '',$getpassword);
 
 // Dapat Konfigurasi Sistem Daripada Database Table Terma Pendaftaran
 $result = mysql_query("SELECT * from termadaftar", $database_connection) or die ('Database CONNECT Error'); 
@@ -155,7 +157,7 @@ if($_POST['commited'] == 'yes')
 	
                 // Kesan Tag dan Data
                 $emailtag = array('%%namaagen%%', '%%namaproduk%%', '%%loginaffiliate%%', '%%idagen%%', '%%passwordagen%%', '%%linkaffiliate%%', '%%namaadmin%%', '%%domain%%');
-                $emailtagreplace = array($_POST['afirstname'], $namaproduk, 'http://'.$domain.'/'.$folderaffiliates.'', $username, $userpassword, 'http://'.$domain.'/hop.php?ref='.$username.'', $admininfo, $domain, ENT_QUOTES, 'UTF-8');
+                $emailtagreplace = array($_POST['afirstname'], $namaproduk, 'https://'.$domain.'/'.$folderaffiliates.'', $username, $userpassword, 'https://'.$domain.'/hop.php?ref='.$username.'', $admininfo, $domain, ENT_QUOTES, 'UTF-8');
 		
                 // Convert Tag Kepada Data Dalam Email
                 $email_send = str_replace($emailtag, $emailtagreplace, $email_pendaftaran_affiliate);

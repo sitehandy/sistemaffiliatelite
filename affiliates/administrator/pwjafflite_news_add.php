@@ -44,7 +44,7 @@ if($_POST['commited'] == 'yes')
             die('Could not connect: ' . mysql_error());
 	}
 	
-	mysql_query("INSERT INTO beritaagen VALUES ('', '".$_POST['tarikhberita']."', '".$_POST['tajukberita']."', '".$kandungan_berita."')", $database_connection) or die('Database INSERT Error');
+	mysql_query("INSERT INTO beritaagen (tarikhberita,tajukberita,kandunganberita) VALUES ('".$_POST['tarikhberita']."', '".$_POST['tajukberita']."', '".$kandungan_berita."')", $database_connection) or die('Database INSERT Error');
         aff_redirect('pwjafflite_admin_news.php');
     }
 // Close POST Committed

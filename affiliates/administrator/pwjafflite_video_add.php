@@ -31,7 +31,7 @@ if($_POST['commited'] == 'yes')
 
     if($errorMsg == '')
     {
-        mysql_query("INSERT INTO videopromosi VALUES ('', '".$_POST['arahan']."', '".$_POST['tajuk']."', '".$_POST['kandungan']."')", $database_connection) or die("Database INSERT Error");
+        mysql_query("INSERT INTO videopromosi (arahan,tajuk,kandungan) VALUES ('".$_POST['arahan']."', '".$_POST['tajuk']."', '".$_POST['kandungan']."')", $database_connection) or die("Database INSERT Error");
         aff_redirect('pwjafflite_admin_videos.php');
     }
 }

@@ -27,7 +27,7 @@
 <body>
 <div id="container">
   <div id="SA_header">
-    	<h1 id="SA_header_logo"><a href="http://<?=$domain?>" class="ir"><span></span><?=$namaproduk?></a></h1><h1 id="SA_header_title"><? print $namaproduk; ?> - <?=MEMBER_PAGE_TITLE?></h1>
+    	<h1 id="SA_header_title"><? print $namaproduk; ?> - <?=MEMBER_PAGE_TITLE?></h1>
   </div>
 	<div id="SA_top_navigation">
     <? if(aff_check_security()) { ?>

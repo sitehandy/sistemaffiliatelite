@@ -4,7 +4,7 @@
 # Nama Sistem: Sistem Affiliate (Lite)
 # Penerbit: Amirol Zolkifli
 # Web Asal: www.sistemaffiliate.com
-# Versi: SA Lite 2.6.1
+# Versi: SA Lite 2.6.0
 #
 # Sistem ini telah dihasilkan, dioleh dan diterbitkan oleh Amirol Zolkifli.
 # Anda tidak dibenarkan melakukan sebarang perubahan pada sistem tanpa
@@ -27,7 +27,7 @@
 
 // Dapatkan Fungsi Fail Yang Diperlukan
 include 'pwjafflite_database.php';
-ini_set('display_errors',0);
+
 // Sambung ke Database
 $database_connection = mysql_connect($server, $db_user, $db_pass);
 if (!$database_connection)
@@ -127,9 +127,9 @@ while ($qry = mysql_fetch_array($konfigurasi_sistem))
     // Konfigurasi Cookies Sistem Affiliate (JANGAN USIK)
     $debugMessage = 'false';
 }
-	
+
 // Versi Skrip Sistem Affiliate Lite
-$pwjafflite_version = 'Version 2.6.1';
+$pwjafflite_version = 'Version 2.6.0';
 
 //-------------------------------------------------------------------------------
 // Butiran Konfigurasi Sistem BORANG HUBUNGI di dalam Ruangan Ahli Affiliate
@@ -155,7 +155,7 @@ $showlink = 'no';
 // Set default time zone setting.
 $time_zone = 'Asia/Kuala_Lumpur';
 
-if(function_exists('date_default_timezone_set'))
+if (function_exists('date_default_timezone_set'))
 {
     date_default_timezone_set($time_zone);
 }
@@ -164,7 +164,16 @@ $clientdate 	= date('Y-m-d'); // Jangan Usik
 $clienttime 	= date('H:i:s'); // Jangan Usik
 $clientbrowser 	= $_SERVER['HTTP_USER_AGENT']; // Jangan Usik
 $clientip	= $_SERVER['REMOTE_ADDR']; // Jangan Usik
-$clienturl 	= $_SERVER['HTTP_REFERER']; // Jangan Usik
+
+if (isset($_SERVER['HTTP_REFERER']))
+{
+    $clienturl 	= $_SERVER['HTTP_REFERER']; // Jangan Usik
+}
+else
+{
+    $clienturl 	= 'Direct Affiliate Link Access';
+}
+
 
 
 
@@ -175,7 +184,7 @@ function aff_check_security()
     {
         return false;
     }
-    
+
     else
     {
         return true;
@@ -189,7 +198,7 @@ function aff_admin_check_security()
     {
         return false;
     }
-    
+
     else
     {
         return true;
@@ -204,7 +213,7 @@ function aff_redirect($url, $time = 0)
 }
 
 // Display Affiliate Version
-if( $_GET['system'] == 'version' )
+if ( isset($_GET['system']) && $_GET['system'] == 'version' )
 {
     print '<div align="center"><p>&nbsp</p><p>SAL Version: '.$pwjafflite_version.'</p>';
 }
@@ -212,14 +221,16 @@ if( $_GET['system'] == 'version' )
 // Fungsi Paparan Footer
 if( $scriptcredit != 1 )
 {
-    $poweredby = 'Affiliate Script Powered By &copy; <a href="http://www.sistemaffiliate.com/?aff_id='.$idaffiliatePIS.'" title="Sistem Affiliate Lite" target="_blank">Sistem Affiliate Lite</a>.';
+    $poweredby = 'Affiliate Script Powered By &copy; <a href="https://www.sistemaffiliate.com/?aff_id='.$idaffiliatePIS.'" title="Sistem Affiliate Lite" target="_blank">Sistem Affiliate Lite</a>.';
+}
+else
+{
+    $poweredby = null;
 }
 
 $footerdisplay = '
 </div>
-<div id="SA_footer">Affiliate Programme By <a href="http://'.$domain.'" title="'.$namaproduk.'">'.$namaproduk.'</a> '.$tahunoperasi.'. '.$poweredby.'</div>   
+<div id="SA_footer">Affiliate Programme By <a href="http://'.$domain.'" title="'.$namaproduk.'">'.$namaproduk.'</a> '.$tahunoperasi.'. '.$poweredby.'</div>
 </div>
 </body>
 </html>';
-	
-?>

@@ -9,7 +9,7 @@ if(!aff_admin_check_security())
     aff_redirect('index.php');
     exit();
 }
-  
+
 $errorMsg = '';
 if($_POST['commited'] == 'yes')
 {
@@ -17,24 +17,34 @@ if($_POST['commited'] == 'yes')
     if($_POST['namaproduk'] == ''){
     $errorMsg .= AFF_PT_ADMINPRODUCTSNAMEERROR.'<br /><br />';
     }
-  
+
+    // check commission record
+    if($_POST['hargaproduk'] == ''){
+    $errorMsg .= 'Sila masukkan harga produk.<br /><br />';
+    }
+
     // check commission record
     if($_POST['komisyenproduk'] == ''){
     $errorMsg .= AFF_PT_ADMINPRODUCTSCOMMISSIONERROR.'<br /><br />';
     }
 
+    // check commission record
+    if($_POST['produkUrl'] == ''){
+    $errorMsg .= 'Sila masukkan URL ke halaman web produk.<br /><br />';
+    }
+
     if($errorMsg == '')
     {
         //Add Products & Commission Records
-        mysql_query("INSERT INTO produk VALUES ('', '".$_POST['namaproduk']."', '".$_POST['komisyenproduk']."')", $database_connection) or die("Database INSERT Error");
+        mysql_query("INSERT INTO produk (namaproduk, hargaproduk, komisyenproduk, produkUrl) VALUES ('".$_POST['namaproduk']."', '".$_POST['hargaproduk']."', '".$_POST['komisyenproduk']."', '".$_POST['produkUrl']."')", $database_connection) or die(mysql_error($database_connection));
         aff_redirect('pwjafflite_admin_products.php');
     }
 // Close POST Check
 }
-  
+
 // Papar Header Sistem Affiliate
-include 'header.php';  
-	  
+include 'header.php';
+
 if($errorMsg != '')
 {
     echo '<br /><table cellspacing="1" class="SA_error_box"><tr><td><br />'.$errorMsg.'</td></tr></table><br />';
@@ -59,12 +69,28 @@ if($errorMsg != '')
             </td>
         </tr>
         <tr>
+            <td class="SA_adminarea_statisticbox_row2"><div align="right">Harga Jualan Produk</div></td>
+            <td class="SA_adminarea_statisticbox_row2"><div align="center">:</div></td>
+            <td class="SA_adminarea_statisticbox_row2"><input type="text" name="hargaproduk" size="20" value="">
+                <br /><font color="#FF0000"><?=AFF_PT_ADMINPRODUCTCOMMISSIONWARNING?></font>
+                <br /><br /><font color="#FF0000"><?=AFF_PT_ADMINPRODUCTSCOMMISSIONSAMPLE?></font>
+            </td class="registration_row1_box">
+        </tr>
+        <tr>
             <td class="SA_adminarea_statisticbox_row2"><div align="right"><?=AFF_PT_ADMINPRODUCTCOMMISSION?></div></td>
             <td class="SA_adminarea_statisticbox_row2"><div align="center">:</div></td>
             <td class="SA_adminarea_statisticbox_row2"><input type="text" name="komisyenproduk" size="20" value="">
                 <br /><font color="#FF0000"><?=AFF_PT_ADMINPRODUCTCOMMISSIONWARNING?></font>
                 <br /><br /><font color="#FF0000"><?=AFF_PT_ADMINPRODUCTSCOMMISSIONSAMPLE?></font>
             </td class="registration_row1_box">
+        </tr>
+        <tr>
+            <td class="SA_adminarea_statisticbox_row1"><div align="right">PRODUK URL</div></td>
+            <td class="SA_adminarea_statisticbox_row1"><div align="center">:</div></td>
+            <td class="SA_adminarea_statisticbox_row1">
+                <input type="url" name="produkUrl" placeholder="http://domain.com"><br />
+                <font color="#FF0000">Masukkan alamat penuh ke laman web produk.</font>
+            </td>
         </tr>
         <tr>
             <td colspan="3" class="SA_adminarea_statisticbox_row1"><br /></td>
@@ -81,9 +107,9 @@ if($errorMsg != '')
 </form>
 <br />
 
-<? 
+<?
 
 //Papar Footer
-echo $footerdisplay; 
+echo $footerdisplay;
 
 ?>

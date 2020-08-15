@@ -13,7 +13,7 @@ if(!aff_check_security())
 
 include 'header.php';
 
-?>  
+?>
 <br />
 <form method="get" action="pwjafflite_member_sales2.php">
     <table width="400" cellspacing="1" class="SA_general_table">
@@ -45,15 +45,15 @@ include 'header.php';
 <br />
 <?
 
-// Papar Statistic Sistem Affiliate 
+// Papar Statistic Sistem Affiliate
 
 // Papar Jumlah Agen Affiliate
 $totalaff = mysql_query("SELECT * FROM affiliates WHERE refid = '".$_SESSION['aff_valid_user']."' ", $database_connection);
 $totalMember = mysql_num_rows($totalaff);
-	
+
 print "<br /><table cellspacing=\"1\" class=\"SA_adminarea_statisticbox\"><tr>";
-print "<td colspan=\"3\" class=\"SA_adminarea_statisticbox_header\">".AFF_MA_MEMBERSALESTOTALTITLE."</td></tr>";	
-   
+print "<td colspan=\"3\" class=\"SA_adminarea_statisticbox_header\">".AFF_MA_MEMBERSALESTOTALTITLE."</td></tr>";
+
 // Jumlah Keseluruhan Jualan Menerusi Sistem Affiliate
 // Jumlah Jualan PENDING
 $statuspending = AFF_AS_STATUSPENDING;
@@ -71,9 +71,9 @@ while ($qrypending = mysql_fetch_array($querystatuspending))
     print "<tr><td class=\"SA_adminarea_statisticbox_row2\">".AFF_MA_MEMBERSTATISTICSALES." - <font color=\"#FF0000\">$statuspending</font></td>";
     print "<td class=\"SA_adminarea_statisticbox_row2\"><div align=\"right\">$sumpendingsales ".AFF_AA_UNIT."</div></td>";
     print "<td class=\"SA_adminarea_statisticbox_row2\"><div align=\"right\">$currency $sumpending</div></td></tr>";
-	
+
 }
-	
+
 // Jumlah Jualan VERIFIED
 $statusverified = AFF_AS_STATUSVERIFIED;
 
@@ -90,8 +90,8 @@ while ($qryverified = mysql_fetch_array($querystatusverified))
     print "<tr><td class=\"SA_adminarea_statisticbox_row1\">".AFF_MA_MEMBERSTATISTICSALES." - <font color=\"#00CC00\">$statusverified</font></td>";
     print "<td class=\"SA_adminarea_statisticbox_row1\"><div align=\"right\">$sumverifiedsales ".AFF_AA_UNIT."</div></td>";
     print "<td class=\"SA_adminarea_statisticbox_row1\"><div align=\"right\">$currency $sumverified</div></td></tr>";
-    
-}	
+
+}
 
 // Jumlah Jualan PAID
 $statuspaid = AFF_AS_STATUSPAID;
@@ -109,8 +109,8 @@ while ($qrypaid = mysql_fetch_array($querystatuspaid))
     print "<tr><td class=\"SA_adminarea_statisticbox_row2\">".AFF_MA_MEMBERSTATISTICSALES." - <font color=\"#0000FF\">$statuspaid</font></td>";
     print "<td class=\"SA_adminarea_statisticbox_row2\"><div align=\"right\">$sumpaidsales ".AFF_AA_UNIT."</div></td>";
     print "<td class=\"SA_adminarea_statisticbox_row2\"><div align=\"right\">$currency $sumpaid</div></td></tr>";
-	
-}	
+
+}
 
 
 // Jumlah KESELURUHAN Jualan
@@ -127,12 +127,12 @@ while ($qry = mysql_fetch_array($query3))
     print "<tr><td class=\"SA_adminarea_statisticbox_row1\"><b>".AFF_MA_MEMBERSALESTOTAL."</b></td>";
     print "<td class=\"SA_adminarea_statisticbox_row1\"><div align=\"right\"><b>$sumsales ".AFF_AA_UNIT."</b></div></td>";
     print "<td class=\"SA_adminarea_statisticbox_row1\"><div align=\"right\"><b>$currency $sumall</b></div></td></tr>";
-		
+
 }
 
 print "</table><br />";
-	
-	
+
+
 ////////////// Setup Paging Sistem///////////
 
 $salesPage = 20;
@@ -164,7 +164,7 @@ else { $start = 0; }
 $query = "SELECT * FROM sales WHERE refid = '".$_SESSION['aff_valid_user']."' ORDER BY idsales DESC LIMIT $start, $salesPage";
 $result = mysql_query($query, $database_connection) or die ("Database Query Error");
 
-//////////////// Papar Senarai Halaman /////////  
+//////////////// Papar Senarai Halaman /////////
 if (mysql_num_rows($result) > 0)
 {
     print "<br /><table cellspacing=\"1\" class=\"SA_general_table\">";
@@ -174,7 +174,7 @@ if (mysql_num_rows($result) > 0)
     buildLeadIndex($totalSales, $salesPage);
     print "</div></td></tr>";
     print "</table><br />";
-	
+
     //Papar Data Sales
     print "<br /><table cellspacing=\"1\" class=\"SA_details_table\">";
     print "<tr><td class=\"SA_details_table_header\">".AFF_C_REFERRER."</td>";
@@ -196,7 +196,15 @@ if (mysql_num_rows($result) > 0)
         print $qry['jumlahpembayaran'];
         print "</div></td>";
         print "<td class=\"SA_details_table_row1\"><div align=\"center\">";
-        print $qry['kaedahpembayaran'];
+        if (!is_null($qry['transaction_id']))
+        {
+            print $qry['transaction_id'];
+        }
+        else
+        {
+            print $qry['kaedahpembayaran'];
+        }
+
         print "</div></td>";
         print "<td class=\"SA_details_table_row2\"><div align=\"center\">";
         print $qry['date'];
@@ -225,6 +233,6 @@ if (mysql_num_rows($result) > 0)
 else echo "<br /><table cellspacing=\"1\" class=\"SA_norecord_box\"><tr><td><br />".AFF_S_TIADAJUALAN."<br /><br /></td></tr></table><br />";
 
 //Papar Footer
-echo $footerdisplay;  
+echo $footerdisplay;
 
 ?>

@@ -12,12 +12,12 @@ if(!aff_check_security())
 }
 
 include 'header.php';
- 
+
 // Dapatkan Data Affiliate
 $affiliatedata = mysql_query("SELECT * FROM affiliates where refid = '".$_SESSION['aff_valid_user']."'", $database_connection) or die ("Database Affiliate Connect Error");
 
 // Greet affiliate
-if (mysql_num_rows($affiliatedata)) 
+if (mysql_num_rows($affiliatedata))
 {
     while ($qry = mysql_fetch_array($affiliatedata))
     {
@@ -57,23 +57,54 @@ if (mysql_num_rows($affiliatedata))
 <br  />
 <table cellspacing="1" class="SA_adminarea_statisticbox">
  <tr>
-    <td class="SA_adminarea_statisticbox_header"><?=AFF_MA_MEMBERAFFLINK?></td>
+    <td class="SA_adminarea_statisticbox_header">DEFAULT AFFILIATE LINK</td>
  </tr>
  <tr>
     <td class="SA_adminarea_statisticbox_row1">
     <div align="center">
-    <input name="linkaffiliate" type="text" size="70" value="http://<? echo $domain ?>/hop.php?ref=<? print $_SESSION['aff_valid_user']?>">
+    <input name="linkaffiliate" type="text" size="70" value="https://<? echo $domain ?>/hop.php?ref=<? print $_SESSION['aff_valid_user']?>">
     </div>
     </td>
  </tr>
  <tr>
  	<td class="SA_adminarea_statisticbox_row2">
     <div align="center">
-    [ <a href="http://<? echo $domain ?>/hop.php?ref=<? print $_SESSION['aff_valid_user']?>" target="_blank"><?=AFF_MA_MEMBERAFFTESTLINK?></a> ]
+    [ <a href="https://<? echo $domain ?>/hop.php?ref=<? print $_SESSION['aff_valid_user']?>" target="_blank"><?=AFF_MA_MEMBERAFFTESTLINK?></a> ]
     </div>
     </td>
  </tr>
 </table>
+
+<?php
+// Dapatkan Berita Terkini Daripada Admin
+$affiliate_links = mysql_query("SELECT * FROM produk ORDER BY idproduk", $database_connection) or die ("Database Produk Connect Error");
+if (mysql_num_rows($affiliate_links))
+{
+    echo '<table cellspacing="1" class="SA_adminarea_statisticbox">';
+    while ($qryproduct = mysql_fetch_array($affiliate_links))
+    {
+        echo '<tr><td class="SA_adminarea_statisticbox_header">AFFILIATE LINK - ' . $qryproduct['namaproduk'] . '</td></tr>';
+        echo '<tr>
+           <td class="SA_adminarea_statisticbox_row1">
+           <div align="center">
+           <input name="linkaffiliate" type="text" size="70" value="https://' . $domain . '/hop.php?ref=' . $_SESSION['aff_valid_user'] . '&p=' . $qryproduct['idproduk'] . '">
+           </div>
+           </td>
+        </tr>';
+        echo '<tr>
+        	<td class="SA_adminarea_statisticbox_row2">
+           <div align="center">
+           [ <a href="https://' . $domain . '/hop.php?ref=' . $_SESSION['aff_valid_user'] . '&p=' . $qryproduct['idproduk'] . '" target="_blank">' . AFF_MA_MEMBERAFFTESTLINK . '</a> ]
+           </div>
+           </td>
+        </tr>';
+    }
+    echo '</table>';
+}
+?>
+
+
+
 
 <br />
 <br />
@@ -96,7 +127,7 @@ if (mysql_num_rows($affiliatedata))
         </td>
     </tr>
 
-<?  
+<?
 // Jumlah Keseluruhan Jualan Menerusi Sistem Affiliate
 
 // Jumlah Jualan PENDING
@@ -110,12 +141,12 @@ while ($qrypending = mysql_fetch_array($querystatuspending))
 {
     $sumpending         += $qrypending['pendingpayments'];
     $sumpendingsales    += $qrypending['pendingsalescount'];
-	  	
+
     print '<tr><td class="SA_adminarea_statisticbox_row2">'.AFF_MA_MEMBERSTATISTICSALES.' - <font color="#FF0000">'.$statuspending.'</font></td>';
     print '<td class="SA_adminarea_statisticbox_row2"><div align="right">'.$sumpendingsales.' '.AFF_AA_UNIT.'</div></td>';
     print '<td class="SA_adminarea_statisticbox_row2"><div align="right">'.$currency.' '.$sumpending.'</div></td></tr>';
 }
-	
+
 // Jumlah Jualan VERIFIED
 $statusverified = AFF_AS_STATUSVERIFIED;
 $querystatusverified = mysql_query("SELECT sum(payment) as verifiedpayments, count(payment) as verifiedsalescount FROM sales WHERE refid = '".$_SESSION['aff_valid_user']."' AND statuspelanggan = '$statusverified'", $database_connection) or die ("Database Error");
@@ -123,15 +154,15 @@ $querystatusverified = mysql_query("SELECT sum(payment) as verifiedpayments, cou
 $sumverified        = 0;
 $sumverifiedsales   = 0;
 
-while ($qryverified = mysql_fetch_array($querystatusverified)) 
+while ($qryverified = mysql_fetch_array($querystatusverified))
 {
     $sumverified        += $qryverified['verifiedpayments'];
     $sumverifiedsales   += $qryverified['verifiedsalescount'];
-	  	
+
     print '<tr><td class="SA_adminarea_statisticbox_row1">'.AFF_MA_MEMBERSTATISTICSALES.' - <font color="#00CC00">'.$statusverified.'</font></td>';
     print '<td class="SA_adminarea_statisticbox_row1"><div align="right">'.$sumverifiedsales.' '.AFF_AA_UNIT.'</div></td>';
     print '<td class="SA_adminarea_statisticbox_row1"><div align="right">'.$currency.' '.$sumverified.'</div></td></tr>';
-}	
+}
 
 // Jumlah Jualan PAID
 $statuspaid = AFF_AS_STATUSPAID;
@@ -139,15 +170,15 @@ $querystatuspaid = mysql_query("SELECT sum(payment) as paidpayments, count(payme
 
 $sumpaid = 0;
 $sumpaidsales = 0;
-while ($qrypaid = mysql_fetch_array($querystatuspaid)) 
+while ($qrypaid = mysql_fetch_array($querystatuspaid))
 {
     $sumpaid        += $qrypaid['paidpayments'];
     $sumpaidsales   += $qrypaid['paidsalescount'];
-	  	
+
     print '<tr><td class="SA_adminarea_statisticbox_row2">'.AFF_MA_MEMBERSTATISTICSALES.' - <font color="#0000FF">'.$statuspaid.'</font></td>';
     print '<td class="SA_adminarea_statisticbox_row2"><div align="right">'.$sumpaidsales.' '.AFF_AA_UNIT.'</div></td>';
     print '<td class="SA_adminarea_statisticbox_row2"><div align="right">'.$currency.' '.$sumpaid.'</div></td></tr>';
-}	
+}
 
 print '<tr><td colspan="3" class="SA_adminarea_statisticbox_row1"><div align="center">&nbsp;</div></td></tr>';
 print '<tr><td colspan="3" class="SA_adminarea_statisticbox_row2"><div align="center">[ <a href="pwjafflite_member_sales.php">'.AFF_MA_MEMBERFULLRECORD.'</a> ]</div></td></tr></table><br />';
@@ -177,7 +208,7 @@ print '<tr><td colspan="3" class="SA_adminarea_statisticbox_row2"><div align="ce
 //Paparkan Keputusan TOP Affiliate
 
 $resulttopaffiliate = mysql_query("SELECT refid, sum(payment) as payments, count(payment) as salescount FROM sales WHERE statuspelanggan = '$statusverified' group by refid ORDER BY salescount desc LIMIT $cartatopaffiliate", $database_connection) or die ("Database Sales Connect Error");
-if (mysql_num_rows($resulttopaffiliate)) 
+if (mysql_num_rows($resulttopaffiliate))
 {
     print '<br /><table class="SA_adminarea_statisticbox" cellspacing="1">';
     print '<tr><td colspan="3" class="SA_adminarea_statisticbox_header">'.AFF_MA_MEMBERTOPAFFILIATEINFO.'</td></tr>';
@@ -186,11 +217,11 @@ if (mysql_num_rows($resulttopaffiliate))
 
     $sumall     = 0;
     $sumsales   = 0;
-    while ($qry = mysql_fetch_array($resulttopaffiliate)) 
+    while ($qry = mysql_fetch_array($resulttopaffiliate))
     {
         $sumall     += $qry['payments'];
         $sumsales   += $qry['salescount'];
-	  
+
         print '<tr>';
         print '<td class="SA_adminarea_statisticbox_row1"><div align="center">'.$qry['refid'].'</div></td>';
         print '<td class="SA_adminarea_statisticbox_row2"><div align="right">'.$qry['salescount'].' '.AFF_AA_UNIT.'</div></td>';
@@ -203,7 +234,7 @@ if (mysql_num_rows($resulttopaffiliate))
     print '</table><br />';
 }
 
-?>  
+?>
 <br />
 <table class="SA_adminarea_statisticbox" cellspacing="1">
     <tr>
@@ -256,6 +287,6 @@ if (mysql_num_rows($resulttopaffiliate))
 }
 
 //Papar Footer Dari Fail pwjafflite_config.php
-echo $footerdisplay;    
+echo $footerdisplay;
 
 ?>

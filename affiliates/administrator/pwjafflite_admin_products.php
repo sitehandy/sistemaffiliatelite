@@ -12,7 +12,7 @@ if(!aff_admin_check_security())
 
 // Papar Header Sistem Affiliate
 include 'header.php';
-  
+
 echo '<br /><table width="600" cellspacing="1" class="SA_general_table"><tr><td class="SA_general_table_header">'.AFF_PT_ADMINPRODUCTTITLE.'</td></tr><tr><td class="SA_general_table_row1"><div align="justify"><br />'.$arahanproducts.'<br /><br /></div></td></tr><tr><td class="SA_general_table_row2"><form method="post" action="pwjafflite_products_add.php"><div align="center"><input type="submit" value="'.AFF_PT_ADMINPRODUCTADD.'"></div></form></td></tr></table><br />';
 
 // Sambung Ke Database Table Produk
@@ -34,11 +34,17 @@ if (mysql_num_rows($result))
         print '<tr><td align="center" colspan="4" class="SA_general_table_row1"><br />';
         print '<div align="center">';
         print $qry['namaproduk'];
+        print '<p><a href="' . $qry['produkUrl'] . '" target="_blank">' . $qry['produkUrl'] . '</a></p>';
         print '</div><br /></td></tr>';
         print '<tr><td colspan="4" class="SA_general_table_row2">';
         print '<div align="center">';
+        print 'Harga Produk: <b>'.$qry['hargaproduk'].'</b>';
+        print '</div></td></tr>';
+        print '<tr><td colspan="4" class="SA_general_table_row2">';
+        print '<div align="center">';
         print AFF_PT_ADMINPRODUCTKOMISYENTITLE.': <b>'.$qry['komisyenproduk'].'</b>';
-        print '</div></td></tr><tr><td colspan="4" class="SA_general_table_row1">&nbsp;</td></tr>';
+        print '</div></td></tr>';
+        print '<tr><td colspan="4" class="SA_general_table_row1">&nbsp;</td></tr>';
     }
     print '</table><br />';
 }
@@ -47,6 +53,4 @@ if (mysql_num_rows($result))
 else echo '<br /><table cellspacing="1" class="SA_norecord_box"><tr><td><br />'.AFF_PT_ADMINNOPRODUCTS.'<br /><br /></td></tr></table><br />';
 
 //Papar Footer
-echo $footerdisplay; 
-
-?>
+echo $footerdisplay;

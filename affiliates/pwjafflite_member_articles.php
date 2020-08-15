@@ -38,7 +38,7 @@ if (mysql_num_rows($resultaffiliate))
     </tr>
     <tr>
  	<td class="SA_adminarea_statisticbox_row2">
-            <div align="center">[ <a href="http://<? echo $domain ?>/hop.php?ref=<? print $_SESSION['aff_valid_user']?>" target="_blank"><?=AFF_MA_MEMBERAFFTESTLINK?></a> ]</div>
+            <div align="center">[ <a href="https://<? echo $domain ?>/hop.php?ref=<? print $_SESSION['aff_valid_user']?>" target="_blank"><?=AFF_MA_MEMBERAFFTESTLINK?></a> ]</div>
         </td>
     </tr>
 </table>

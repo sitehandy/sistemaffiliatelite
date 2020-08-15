@@ -35,7 +35,7 @@ if($_POST['commited'] == 'yes')
             die('Could not connect: ' . mysql_error());
         }
 
-        mysql_query("INSERT INTO banners VALUES ('', '".$_POST['bannername']."', '".$_POST['bannerurl']."', '".$_POST['bannerdesc']."')", $database_connection) or die('Database INSERT Error');
+        mysql_query("INSERT INTO banners (name,image,description) VALUES ('".$_POST['bannername']."', '".$_POST['bannerurl']."', '".$_POST['bannerdesc']."')", $database_connection) or die('Database INSERT Error');
         aff_redirect('pwjafflite_admin_banners.php');
     }
 

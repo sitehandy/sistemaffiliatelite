@@ -23,14 +23,14 @@ include 'header.php';
     <tr>
         <td class="SA_adminarea_statisticbox_row1">
             <div align="center">
-                <input name="linkaffiliate" type="text" size="70" value="http://<? echo $domain ?>/hop.php?ref=<? print $_SESSION['aff_valid_user']?>">
+                <input name="linkaffiliate" type="text" size="70" value="https://<? echo $domain ?>/hop.php?ref=<? print $_SESSION['aff_valid_user']?>">
             </div>
         </td>
     </tr>
     <tr>
         <td class="SA_adminarea_statisticbox_row2">
             <div align="center">
-                [ <a href="http://<? echo $domain ?>/hop.php?ref=<? print $_SESSION['aff_valid_user']?>" target="_blank"><?=AFF_MA_MEMBERAFFTESTLINK?></a> ]
+                [ <a href="https://<? echo $domain ?>/hop.php?ref=<? print $_SESSION['aff_valid_user']?>" target="_blank"><?=AFF_MA_MEMBERAFFTESTLINK?></a> ]
             </div>
         </td>
     </tr>

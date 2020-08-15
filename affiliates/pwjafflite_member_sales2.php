@@ -16,7 +16,7 @@ include 'header.php';
 // protection against script injection
 $status = preg_replace('/[^a-zA-Z0-9_]/', '', $_GET['status']);
 
-?>  
+?>
 <br />
 <form method="get" action="pwjafflite_member_sales2.php">
     <table width="400" cellspacing="1" class="SA_general_table">
@@ -68,7 +68,7 @@ while ($qry = mysql_fetch_array($querysales))
     print "<td class=\"SA_general_table_row2\"><div align=\"right\">$currency $sumall</div></td></tr>";
     print "</table><br />";
 
-}	
+}
 
 ////////////// Setup Paging Sistem///////////
 
@@ -102,8 +102,8 @@ $query = "SELECT * FROM sales WHERE refid = '".$_SESSION['aff_valid_user']."' AN
 $result = mysql_query($query, $database_connection) or die ("Database Query Error");
 
 
-//////////////// Papar Senarai Halaman /////////  
-if (mysql_num_rows($result) > 0)  	
+//////////////// Papar Senarai Halaman /////////
+if (mysql_num_rows($result) > 0)
 {
     print "<br /><table cellspacing=\"1\" class=\"SA_general_table\">";
     print "<tr><td colspan=\"3\" class=\"SA_general_table_header\">".AFF_AS_SALESSTATUS." - <b><u>";
@@ -113,7 +113,7 @@ if (mysql_num_rows($result) > 0)
     print "</div></td></tr>";
     print "</table><br />";
 
-//Papar Data Sales	
+//Papar Data Sales
 
     print "<br /><table cellspacing=\"1\" class=\"SA_details_table\">";
     print "<tr><td class=\"SA_details_table_header\">".AFF_C_REFERRER."</td>";
@@ -135,7 +135,14 @@ if (mysql_num_rows($result) > 0)
         print $qry['jumlahpembayaran'];
         print "</div></td>";
         print "<td class=\"SA_details_table_row1\"><div align=\"center\">";
-        print $qry['kaedahpembayaran'];
+        if (!is_null($qry['transaction_id']))
+        {
+            print $qry['transaction_id'];
+        }
+        else
+        {
+            print $qry['kaedahpembayaran'];
+        }
         print "</div></td>";
         print "<td class=\"SA_details_table_row2\"><div align=\"center\">";
         print $qry['date'];
@@ -160,9 +167,9 @@ if (mysql_num_rows($result) > 0)
 }
 
 //Papar Informasi Jika Tiada Jualan Terhasi Lagi
-else echo "<br /><table cellspacing=\"1\" class=\"SA_norecord_box\"><tr><td><br />".AFF_AS_STATUSNORECORD." - $status<br /><br /></td></tr></table><br />";  
+else echo "<br /><table cellspacing=\"1\" class=\"SA_norecord_box\"><tr><td><br />".AFF_AS_STATUSNORECORD." - $status<br /><br /></td></tr></table><br />";
 
 //Papar Footer
-echo $footerdisplay;  
+echo $footerdisplay;
 
 ?>

@@ -117,7 +117,7 @@ if($errorMsg == '')
             if( mysql_num_rows($resultref) )
             {
                 while ($qryidref = mysql_fetch_array($resultref))
-		          $ref = $qryidref['refid'];
+		$ref = $qryidref['refid'];
             }
 	}		
     }
@@ -233,7 +233,7 @@ if($errorMsg == '')
 
             $mail->IsMail();									// Set mailer to use PHP Mail
 
-            $mail->From = $emailadminsupport;
+            $mail->From = $emailpembeli;
             $mail->FromName = $namapembeli;
             $mail->AddAddress($emailadminpayment, $admininfo);		// Add a recipient
             $mail->AddReplyTo($emailpembeli);

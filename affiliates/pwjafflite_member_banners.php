@@ -25,12 +25,12 @@ $resultbanneraffiliate = mysql_query("SELECT * from affiliates where refid = '".
     </tr>
     <tr>
  	<td class="SA_adminarea_statisticbox_row1">
-           <div align="center"><input name="linkaffiliate" type="text" size="70" value="http://<? echo $domain ?>/hop.php?ref=<? print $_SESSION['aff_valid_user']?>"></div>
+           <div align="center"><input name="linkaffiliate" type="text" size="70" value="https://<? echo $domain ?>/hop.php?ref=<? print $_SESSION['aff_valid_user']?>"></div>
         </td>
     </tr>
     <tr>
  	<td class="SA_adminarea_statisticbox_row2">
-            <div align="center">[ <a href="http://<? echo $domain ?>/hop.php?ref=<? print $_SESSION['aff_valid_user']?>" target="_blank"><?=AFF_MA_MEMBERAFFTESTLINK?></a> ]</div>
+            <div align="center">[ <a href="https://<? echo $domain ?>/hop.php?ref=<? print $_SESSION['aff_valid_user']?>" target="_blank"><?=AFF_MA_MEMBERAFFTESTLINK?></a> ]</div>
         </td>
     </tr>
 </table>
@@ -50,18 +50,18 @@ if (mysql_num_rows($resultbanner))
         print $qry['name'];
         print '</td></tr><tr>';
         print '<td class="SA_general_table_row1"><br>';
-        print '<a href="http://';
+        print '<a href="https://';
         print $domain;
         print '/hop.php?ref='.$_SESSION['aff_valid_user'].'" target="_blank">';
         print '<div align="center"><img src="';        
         print $qry['image'];
-        print '" border="0"></div></a></td></tr>';
+        print '"  style="max-width: 400px !important;" border="0"></div></a></td></tr>';
         print '<tr><td class="SA_general_table_row2"><div align="center">';
-        print '<textarea cols="60" rows="3"><a href="http://';
+        print '<textarea cols="60" rows="3"><a href="https://';
         print $domain;
         print '/hop.php?ref='.$_SESSION['aff_valid_user'].'" target="_blank"><img src="';
         print $qry['image'];
-        print '"></a></textarea>';
+        print '" style="max-width: 000px !important;" border="0"></a></textarea>';
         print '</div></td></tr><tr><td class="SA_general_table_row1">&nbsp;</td></tr>';
     }
     print '</table><br />';

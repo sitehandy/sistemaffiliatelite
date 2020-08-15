@@ -33,10 +33,10 @@ if (mysql_num_rows($result))
         print '<td width="20%" class="SA_general_table_header"><div align="center"><a href="pwjafflite_banner_delete.php?delete='.$qry['number'].'&validation='.$_SESSION['aff_valid_admin'].'" onClick="return confirm(\''.AFF_P_DELETE.'\')">'.AFF_B_DELETEBANNER.'</a></div></td></tr>';
         print '<tr><td align="center" colspan="4" class="SA_general_table_row1"><br>';
         print '<a href="http://'.$domain.'/hop.php?ref=id_agen" target="_blank">';
-        print '<div align="center"><img src="'.$qry['image'].'" border="0"></div></a><br /></td>';
+        print '<div align="center"><img src="'.$qry['image'].'" style="max-width: 400px !important;" border="0"></div></a><br /></td>';
         print '</tr>';
         print '<tr><td colspan="4" class="SA_general_table_row2">';
-        print '<div align="center"><textarea cols="60" rows="3"><a href="http://'.$domain.'/hop.php?ref=id_agen" target="_blank"><img src="'.$qry['image'].'"></a></textarea></div>';
+        print '<div align="center"><textarea cols="60" rows="3"><a href="http://'.$domain.'/hop.php?ref=id_agen" target="_blank"><img src="'.$qry['image'].'" style="max-width: 400px !important;"></a></textarea></div>';
         print '</td></tr><tr><td colspan="4" class="SA_general_table_row1">&nbsp;</td></tr>';
     }
 

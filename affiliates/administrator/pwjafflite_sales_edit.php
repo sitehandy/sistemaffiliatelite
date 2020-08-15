@@ -28,7 +28,7 @@ if (($_REQUEST['salesid']) && ($_REQUEST['validation'] == $_SESSION['aff_valid_a
     {
         print '<br /><table cellspacing="1" class="SA_norecord_box"><tr><td><br />'.AFF_S_TIADAJUALANID.'<br /><br /></td></tr></table><br />';
     }
-    
+
     if (mysql_num_rows($saletoedit) > 0)
     {
 
@@ -46,11 +46,6 @@ if (($_REQUEST['salesid']) && ($_REQUEST['validation'] == $_SESSION['aff_valid_a
             // check jumlah pembayaran
             if($_POST['jumlahpembayaran'] == ''){
             $errorMsg .= '<br />Please enter product name.<br />';
-            }
-
-            // check kaedah pembayaran
-            if($_POST['kaedahpembayaran'] == ''){
-            $errorMsg .= '<br />Please enter payment method.<br />';
             }
 
             // Check Komisyen
@@ -87,7 +82,7 @@ if (($_REQUEST['salesid']) && ($_REQUEST['validation'] == $_SESSION['aff_valid_a
                         $namaagen   = $qryinfoagen['firstname'];
                         $emailagen  = $qryinfoagen['email'];
                     }
-                                
+
 // Hantar notifikasi komisyen telah diubah
 
 $email_notifikasi_agen_asal = '
@@ -107,7 +102,7 @@ Maklumat ASAL jualan affiliate anda adalah seperti berikut:
 ID Jualan: '.$salesid.'
 Nama Produk: '.$namajualan.'
 ID Affiliate: '.$idagen.'
-    
+
 Nama Pelanggan: '.$pelanggannama.'
 Email Pelanggan: '.$pelangganemail.'
 Jumlah Komisyen: '.$komisyen.'
@@ -180,9 +175,9 @@ http://'.$domain.'/
         }
             // Close Dapatkan Info Agen
             }
-            
+
 // Update Database Table Admin
-mysql_query("UPDATE sales SET refid = '".$_POST['refid']."', jumlahpembayaran = '".$_POST['jumlahpembayaran']."', kaedahpembayaran = '".$_POST['kaedahpembayaran']."', payment = '".$_POST['payment']."', statuspelanggan = '".$_POST['statuspelanggan']."' WHERE idsales = '$salesid'", $database_connection) or die ('Database Error');
+mysql_query("UPDATE sales SET refid = '".$_POST['refid']."', jumlahpembayaran = '".$_POST['jumlahpembayaran']."', payment = '".$_POST['payment']."', statuspelanggan = '".$_POST['statuspelanggan']."' WHERE idsales = '$salesid'", $database_connection) or die ('Database Error');
 
 echo '<br /><table cellspacing="1" class="SA_success_box"><tr><td><br />'.AFF_S_PERTUKARANREKODJUALAN.'<br /><br /></td></tr></table><br />';
         }
@@ -226,11 +221,11 @@ echo '<br /><table cellspacing="1" class="SA_success_box"><tr><td><br />'.AFF_S_
             print '</td><td class="SA_details_table_row2"><div align="center">';
             print '<input type="text" name="jumlahpembayaran" value="';
             print $qry['jumlahpembayaran'];
-            print '" /></div></td>';            
+            print '" /></div></td>';
             print '<td class="SA_details_table_row1"><div align="center">';
             print '<input type="text" name="kaedahpembayaran" value="';
-            print $qry['kaedahpembayaran'];
-            print '" /></div></td>';
+            print $qry['transaction_id'];
+            print '" disabled="disabled" /></div></td>';
             print '<td class="SA_details_table_row2"><div align="center">';
             print $qry['date'];
             print '</div></td>';
@@ -266,7 +261,7 @@ echo '<br /><table cellspacing="1" class="SA_success_box"><tr><td><br />'.AFF_S_
             foreach($status as $key => $valuestatus){
             print '<option value="'.$valuestatus.'" '.($valuestatus == $qry['statuspelanggan'] ? 'selected' : '').'>'.$valuestatus.'</option>';
             }
-            
+
             print '</select>';
             print '</div></td>';
             print '<td class="SA_details_table_row2"><center>[<a href="pwjafflite_sales_delete.php?delete='.$qry['idsales'].'&validation='.$_SESSION['aff_valid_admin'].' "onClick="return confirm(\''.AFF_P_DELETE.'\')"">Delete</a>]';
@@ -283,6 +278,6 @@ echo '<br /><table cellspacing="1" class="SA_success_box"><tr><td><br />'.AFF_S_
 else echo '<br /><table cellspacing="1" class="SA_norecord_box"><tr><td><br />'.AFF_S_TIADAREKODJUALAN.'<br /><br /></td></tr></table><br />';
 
 //Papar Footer
-echo $footerdisplay;  
+echo $footerdisplay;
 
 ?>

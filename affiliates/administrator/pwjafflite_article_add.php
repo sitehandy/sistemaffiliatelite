@@ -33,7 +33,7 @@ if($_POST['commited'] == 'yes')
 
     if($errorMsg == '')
     {
-        mysql_query("INSERT INTO artikelpromosi VALUES ('', '".$_POST['arahan']."', '".$_POST['tajuk']."', '".$_POST['kandungan']."') ", $database_connection) or die("Database INSERT Error");
+        mysql_query("INSERT INTO artikelpromosi (arahan,tajuk,kandungan) VALUES ('".$_POST['arahan']."', '".$_POST['tajuk']."', '".$_POST['kandungan']."') ", $database_connection) or die("Database INSERT Error");
         aff_redirect('pwjafflite_admin_articles.php');
     }
 

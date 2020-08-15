@@ -6,30 +6,12 @@ include 'includes/filters/magicquotes.inc.php';
 // Include system config file.
 include 'pwjafflite_config.php';
 
-function clean($string) {
-   $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
-
-   return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
-}
-
-$subscriber_email = clean( $_GET['email'] );
-$subscriber_phone = clean( $_GET['phone'] );
-
 // Check referer ID
-if( isset( $_GET['ref'] ) and $_GET['ref'] != '' )
+if (isset($_GET['ref']) && !empty($_GET['ref']) )
 {
     // Filter $_GET['ref']
-    $ref = preg_replace('/[^a-zA-Z0-9-]/', '', $_GET['ref'] );
+    $ref = preg_replace('/[^a-zA-Z0-9-]/', '', $_GET['ref']);
 
-    // Check and validate affiliate ID
-    $check_affiliate_id = mysql_query("SELECT * FROM affiliates WHERE refid = '".$ref."' LIMIT 1", $database_connection);
-
-    if( ! mysql_fetch_array($check_affiliate_id) )
-    {
-        header('Location: ' . $landingpage );
-        exit();
-    }
-    
     // Check Referer Cookie
     if( isset( $_COOKIE['ref'] ) )
     {
@@ -45,7 +27,7 @@ if( isset( $_GET['ref'] ) and $_GET['ref'] != '' )
             {
                 $cookieLifetime = time() + $cookieExpiration*86400;
             }
-            
+
             else
             {
                 $cookieLifetime = time() + 3650*86400;
@@ -65,12 +47,12 @@ if( isset( $_GET['ref'] ) and $_GET['ref'] != '' )
             }
 
             // Update Clicks
-            mysql_query("INSERT INTO clickthroughs 
-                (refid, date, time, browser, ipaddress, refferalurl) VALUES 
+            mysql_query("INSERT INTO clickthroughs
+                (refid, date, time, browser, ipaddress, refferalurl) VALUES
                 ('$ref', '$clientdate', '$clienttime', '$clientbrowser', '$clientip', '$clienturl')", $database_connection)
                     or die ('Cannot Connect to Server');
         }
-        
+
         // If Cookie and Referral are the same
         else if( ($affiliate_tracking != 'F') && ($_COOKIE['ref'] == $ref) )
         {
@@ -79,40 +61,40 @@ if( isset( $_GET['ref'] ) and $_GET['ref'] != '' )
             {
                 $clienturl = 'Direct Linking Referred by Affiliate';
             }
-            
+
             else
             {
                 $clienturl = $clienturl.' - Return Visitor';
             }
-            
+
             // Update clicks
-            mysql_query("INSERT INTO clickthroughs 
-                (refid, date, time, browser, ipaddress, refferalurl) VALUES 
+            mysql_query("INSERT INTO clickthroughs
+                (refid, date, time, browser, ipaddress, refferalurl) VALUES
                 ('$ref', '$clientdate', '$clienttime', '$clientbrowser', '$clientip', '$clienturl')", $database_connection)
                     or die ('Cannot Connect to Server');
         }
 
         // If rewrite cookie is not allowed
-        else 
+        else
         {
             // Set Referral URL if not refered
             if($clienturl == '')
             {
                 $clienturl = 'Direct Linking Referred by Affiliate';
             }
-            
+
             else
             {
                 $clienturl = $clienturl.' - Return Visitor';
             }
-            
+
             //Update status klik agen
-            mysql_query("INSERT INTO clickthroughs 
-                (refid, date, time, browser, ipaddress, refferalurl) VALUES 
+            mysql_query("INSERT INTO clickthroughs
+                (refid, date, time, browser, ipaddress, refferalurl) VALUES
                 ('".$_COOKIE['ref']."', '$clientdate', '$clienttime', '$clientbrowser', '$clientip', '$clienturl')", $database_connection)
                     or die ('Cannot Connect to Server');
         }
-    
+
     } // Close Referer Cookie Checking
 
     // IF cookie not exist
@@ -123,7 +105,7 @@ if( isset( $_GET['ref'] ) and $_GET['ref'] != '' )
         {
             $cookieLifetime = time() + $cookieExpiration*86400;
         }
-        
+
         else
         {
             $cookieLifetime = time() + 3650*86400;
@@ -143,14 +125,38 @@ if( isset( $_GET['ref'] ) and $_GET['ref'] != '' )
         }
 
         //Update status klik agen
-        mysql_query("INSERT INTO clickthroughs 
-            (refid, date, time, browser, ipaddress, refferalurl) VALUES 
+        mysql_query("INSERT INTO clickthroughs
+            (refid, date, time, browser, ipaddress, refferalurl) VALUES
             ('$ref', '$clientdate', '$clienttime', '$clientbrowser', '$clientip', '$clienturl')", $database_connection)
                 or die ('Cannot Connect to Server');
     }
 } // Close GET Referer checking
 
-// Redirect User to Landing Page
-header('Location: '.$landingpage);
+// Check referer ID
+if (isset($_GET['p']) && !empty($_GET['p']))
+{
+    // Get only DIGITS
+    // http://agen.cikguhafis.com/hop.php?ref=demo&p=1
+    $product_id = preg_replace('/[^0-9]/', '', $_GET['p']);
+
+    // Get product ID
+    $product = mysql_query("SELECT * FROM produk WHERE idproduk = '" . $product_id . "'", $database_connection) or die ("Database Affiliate Connect Error");
+
+    if (mysql_num_rows($product))
+    {
+        while ($qry = mysql_fetch_array($product))
+        {
+            if (!is_null($qry['produkUrl']))
+            {
+                // Redirect User to Landing Page
+                header('Location: ' . $qry['produkUrl'] . '?ref=' . $ref);
+                exit();
+            }
+        }
+    }
+}
+
+// Redirect User to Landing Page by default
+header('Location: ' . $landingpage . '?ref=' . $ref);
 exit();
 ?>
