@@ -221,7 +221,7 @@ if ( isset($_GET['system']) && $_GET['system'] == 'version' )
 // Fungsi Paparan Footer
 if( $scriptcredit != 1 )
 {
-    $poweredby = 'Affiliate Script Powered By &copy; <a href="https://www.sistemaffiliate.com/?aff_id='.$idaffiliatePIS.'" title="Sistem Affiliate Lite" target="_blank">Sistem Affiliate Lite</a>.';
+    $poweredby = 'Affiliate Script Powered By &copy; <a href="http://www.sistemaffiliate.com/?aff_id='.$idaffiliatePIS.'" title="Sistem Affiliate Lite" target="_blank">Sistem Affiliate Lite</a>.';
 }
 else
 {
@@ -234,3 +234,5 @@ $footerdisplay = '
 </div>
 </body>
 </html>';
+
+?>

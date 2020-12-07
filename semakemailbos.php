@@ -12,7 +12,19 @@ $namapembeli        = $_GET['name'];
 $emailpembeli       = $_GET['email'];
 $jumlahpembayaran   = 'GetResponse.com';
 $kaedahpembayaran   = 'PPL';
-$komisyenaffiliate  = '3.00';
+
+$produk = mysql_query("SELECT * FROM produk WHERE idproduk = '1'", $database_connection) or die ('Database Connection Error 1.0');
+
+if (mysql_num_rows($produk))
+{
+    while ($produk_result = mysql_fetch_array($produk))
+    $komisyenaffiliate = $produk_result['komisyenproduk'];
+}
+else
+{
+    $komisyenaffiliate  = '3.00';
+}
+
 
 // PHPLOCKITOPT START
 // Semak cookies agen affiliate
@@ -28,7 +40,7 @@ if (isset($_GET['email']) && !empty($_GET['email']))
     	$ref = $_SESSION['ref'];
     	if ($_SESSION['ref'] == '')
     	{
-            $resultref = mysql_query("SELECT refid FROM clickthroughs WHERE ipaddress = '$clientip' ORDER BY date, time desc LIMIT 1", $database_connection) or die ('Database Connection Error');
+            $resultref = mysql_query("SELECT refid FROM clickthroughs WHERE ipaddress = '$clientip' ORDER BY date, time desc LIMIT 1", $database_connection) or die ('Database Connection Error 1');
             if (mysql_num_rows($resultref))
             {
                 while ($qryidref = mysql_fetch_array($resultref))
@@ -40,7 +52,7 @@ if (isset($_GET['email']) && !empty($_GET['email']))
     if ($ref != '')
     {
     	//Semak rekod sama ada pernah didaftarkan ke dalam sistem affiliate atau tidak
-    	$result = mysql_query("SELECT * FROM sales WHERE emailpelanggan = '$emailpembeli'", $database_connection) or die ('Database Connection Error');
+    	$result = mysql_query("SELECT * FROM sales WHERE emailpelanggan = '$emailpembeli' AND ipaddress = '$clientip'", $database_connection) or die ('Database Connection Error');
 
     	// Jika masih belum mendaftar, maka proses pendaftaran
     	if (!mysql_num_rows($result))
@@ -54,7 +66,7 @@ if (isset($_GET['email']) && !empty($_GET['email']))
                 }
 
                 // Data rekod pembelian dan komisyen ke dalam database sistem affiliate
-                mysql_query("INSERT INTO sales (idsales, refid, jumlahpembayaran, kaedahpembayaran, date, time, browser, ipaddress, payment, namapelanggan, emailpelanggan, statuspelanggan) VALUES ('', '$ref', '$jumlahpembayaran', '$kaedahpembayaran', '$clientdate', '$clienttime', '$clientbrowser', '$clientip', '$komisyenaffiliate', '$namapembeli', '$emailpembeli', '$statuspelanggan')", $database_connection) or die ('Database Insert Error');
+                mysql_query("INSERT INTO sales (refid, jumlahpembayaran, kaedahpembayaran, date, time, browser, ipaddress, payment, namapelanggan, emailpelanggan, statuspelanggan) VALUES ('$ref', '$jumlahpembayaran', '$kaedahpembayaran', '$clientdate', '$clienttime', '$clientbrowser', '$clientip', '$komisyenaffiliate', '$namapembeli', '$emailpembeli', '$statuspelanggan')", $database_connection) or die ('Database Insert Error 2');
     	}
 
         // Close Komisyen Generate

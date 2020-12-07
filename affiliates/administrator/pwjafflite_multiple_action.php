@@ -21,9 +21,9 @@ if ( isset($_POST['checkbox']) )
         foreach ($action as $id)
         {
             mysql_query("DELETE FROM sales WHERE idsales = '".$id."'", $database_connection) or die("Database DELETE Error");
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
-            exit();
         }
+		header('Location: ' . $_SERVER['HTTP_REFERER']);
+		exit();
     }
     
     // Process selected item - paid action.

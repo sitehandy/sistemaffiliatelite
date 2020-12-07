@@ -338,7 +338,7 @@ define('AFF_AS_STATUSTOTALCOMMISSION', 'Jumlah Komisyen Yang Direkod');
 define('AFF_AS_STATUSNORECORD', 'Masih Belum Ada Rekod Jualan');
 define('AFF_AS_SALESCOMMISSIONTITLE', 'Rekod Jualan & Komisyen Agen');
 define('AFF_AS_SALESSTATUS', 'Rekod Keseluruhan Jualan Berstatus');
-define('AFF_AS_STATUSPENDING', 'PENDING');
+define('AFF_AS_STATUSPENDING', 'UNVERIFIED');
 define('AFF_AS_STATUSCANCELLED', 'CANCELLED');
 define('AFF_AS_STATUSVERIFIED', 'VERIFIED');
 define('AFF_AS_STATUSPAID', 'PAID');

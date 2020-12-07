@@ -48,7 +48,16 @@ if (mysql_num_rows($result))
 {
     while ($qry = mysql_fetch_array($result))
     {
-        echo "<option value=".$qry['refid'].">".$qry['refid']."</option>";
+		if(isset($_GET['agen']) && $_GET['agen'] == $qry['refid'])
+		{
+			$selected_agen = ' selected="selected"';
+		}
+		else
+		{
+			$selected_agen = '';
+		}
+		
+        echo '<option value="'.$qry['refid'].'"' . $selected_agen . '>' . $qry['refid'] . '</option>';
     }
 }
 
@@ -61,10 +70,10 @@ if (mysql_num_rows($result))
             <td class="SA_general_table_row2"><div align="center">:</div></td>
             <td class="SA_general_table_row2">
                 <div align="left">
-                    <input type="radio" name="status" value="<?=AFF_AS_STATUSPENDING?>" checked="checked" /><?=AFF_AS_STATUSPENDING?><br />
-                    <input type="radio" name="status" value="<?=AFF_AS_STATUSVERIFIED?>" /><?=AFF_AS_STATUSVERIFIED?><br />
-                    <input type="radio" name="status" value="<?=AFF_AS_STATUSPAID?>" /><?=AFF_AS_STATUSPAID?><br />
-                    <input type="radio" name="status" value="<?=AFF_AS_STATUSCANCELLED?>" /><?=AFF_AS_STATUSCANCELLED?>
+                    <input type="radio" name="status" value="<?=AFF_AS_STATUSPENDING?>"<?php if(isset($_GET['status']) && $_GET['status'] == AFF_AS_STATUSPENDING) {echo ' checked="checked"';} ?> /><?=AFF_AS_STATUSPENDING?><br />
+                    <input type="radio" name="status" value="<?=AFF_AS_STATUSVERIFIED?>"<?php if(isset($_GET['status']) && $_GET['status'] == AFF_AS_STATUSVERIFIED) {echo ' checked="checked"';} ?> /><?=AFF_AS_STATUSVERIFIED?><br />
+                    <input type="radio" name="status" value="<?=AFF_AS_STATUSPAID?>"<?php if(isset($_GET['status']) && $_GET['status'] == AFF_AS_STATUSPAID) {echo ' checked="checked"';} ?> /><?=AFF_AS_STATUSPAID?><br />
+                    <input type="radio" name="status" value="<?=AFF_AS_STATUSCANCELLED?>"<?php if(isset($_GET['status']) && $_GET['status'] == AFF_AS_STATUSCANCELLED) {echo ' checked="checked"';} ?> /><?=AFF_AS_STATUSCANCELLED?>
                 </div>
             </td>
         </tr>

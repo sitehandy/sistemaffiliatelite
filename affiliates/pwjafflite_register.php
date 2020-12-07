@@ -143,7 +143,48 @@ if($_POST['commited'] == 'yes')
     // Proses Data Jika Tiada Sebarang Masalah
     if($errorMsg == '')
     {
-        mysql_query("INSERT INTO affiliates VALUES ('', '".$username."', '".$password."', '".$_POST['atitle']."', '".$_POST['afirstname']."', '".$_POST['alastname']."', '".$_POST['aemail']."', '".$_POST['awebsite']."', '".$_POST['astreet']."', '".$_POST['atown']."', '".$_POST['acounty']."', '".$_POST['apostcode']."', '".$_POST['acountry']."', '".$_POST['aphone']."', '".$_POST['aprocessor']."', '".$_POST['aaccount']."', '".$_POST['apayto']."', '$clientdate', '$clientip', '".$cookiesaffiliate."')", $database_connection) or die(mysql_error());
+        mysql_query("INSERT INTO affiliates 
+		(refid,
+  pass,
+  title,
+  firstname,
+  lastname,
+  email,
+  website,
+  street,
+  town,
+  county,
+  postcode,
+  country,
+  phone,
+  processor,
+  account,
+  payto,
+  date,
+  ipaddress,
+  upline)
+  
+  VALUES 
+  ('".$username."', 
+  '".$password."', 
+  '".$_POST['atitle']."', 
+  '".$_POST['afirstname']."', 
+  '".$_POST['alastname']."', 
+  '".$_POST['aemail']."', 
+  '".$_POST['awebsite']."', 
+  '".$_POST['astreet']."', 
+  '".$_POST['atown']."', 
+  '".$_POST['acounty']."', 
+  '".$_POST['apostcode']."', 
+  '".$_POST['acountry']."', 
+  '".$_POST['aphone']."', 
+  '".$_POST['aprocessor']."', 
+  '".$_POST['aaccount']."', 
+  '".$_POST['apayto']."', 
+  '$clientdate', 
+  '$clientip', 
+  '".$cookiesaffiliate."'
+  )", $database_connection) or die(mysql_error());
         // Hantar Email Pendaftaran Ke Email Agen
 
         $result = mysql_query('SELECT * FROM emailadmin', $database_connection) or die ('Database Error');

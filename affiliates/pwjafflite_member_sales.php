@@ -114,7 +114,7 @@ while ($qrypaid = mysql_fetch_array($querystatuspaid))
 
 
 // Jumlah KESELURUHAN Jualan
-$query3 = mysql_query("select sum(payment) as payments, count(payment) as salescount from sales WHERE refid = '".$_SESSION['aff_valid_user']."' ", $database_connection) or die ("Database Error");
+$query3 = mysql_query("select sum(payment) as payments, count(payment) as salescount from sales WHERE refid = '".$_SESSION['aff_valid_user']."' AND statuspelanggan != '$statuspending'", $database_connection) or die ("Database Error");
 
 $sumall     = 0;
 $sumsales   = 0;
@@ -152,7 +152,7 @@ function buildLeadIndex($qty, $salesPage) {
 
 
 // get total Sales
-$qryT = mysql_query("SELECT * FROM sales WHERE refid = '".$_SESSION['aff_valid_user']."' ", $database_connection);
+$qryT = mysql_query("SELECT * FROM sales WHERE refid = '".$_SESSION['aff_valid_user']."' AND statuspelanggan != '$statuspending'", $database_connection);
 $totalSales = mysql_num_rows($qryT);
 
 // get Sales
@@ -161,7 +161,7 @@ else { $start = 0; }
 
 ////Get Clicks Data
 
-$query = "SELECT * FROM sales WHERE refid = '".$_SESSION['aff_valid_user']."' ORDER BY idsales DESC LIMIT $start, $salesPage";
+$query = "SELECT * FROM sales WHERE refid = '".$_SESSION['aff_valid_user']."' AND statuspelanggan != '$statuspending' ORDER BY idsales DESC LIMIT $start, $salesPage";
 $result = mysql_query($query, $database_connection) or die ("Database Query Error");
 
 //////////////// Papar Senarai Halaman /////////

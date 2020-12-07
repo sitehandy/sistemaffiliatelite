@@ -10,8 +10,8 @@ include 'pwjafflite_config.php';
 if (isset($_GET['ref']) && !empty($_GET['ref']) )
 {
     // Filter $_GET['ref']
-    $ref = preg_replace('/[^a-zA-Z0-9-]/', '', $_GET['ref']);
-
+    //$ref = preg_replace('/[^a-zA-Z0-9-_]/', '', $_GET['ref']);
+	$ref = preg_replace('/[^\w.-]/', '', $_GET['ref']);
     // Check Referer Cookie
     if( isset( $_COOKIE['ref'] ) )
     {
