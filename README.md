@@ -2,6 +2,16 @@
 
 A complete affiliate marketing management system built with Laravel 12. Manage your affiliate programs, track conversions, and handle payouts all in one place.
 
+## Repository
+
+**GitHub:** [https://github.com/sitehandy/sistemaffiliatelite](https://github.com/sitehandy/sistemaffiliatelite)
+
+Clone the repository:
+```bash
+git clone https://github.com/sitehandy/sistemaffiliatelite.git
+cd sistemaffiliatelite
+```
+
 ## Features
 
 ### For Administrators
