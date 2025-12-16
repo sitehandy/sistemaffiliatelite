@@ -191,6 +191,22 @@ MAIL_FROM_NAME="Your App Name"
 
 Configure default cookie duration in Admin Panel > Settings > General Settings.
 
+### Demo Mode
+
+Enable demo mode to protect your live demo from unauthorized changes:
+
+```env
+DEMO_MODE=true
+```
+
+When `DEMO_MODE=true`:
+- Admin configuration cannot be updated (Settings pages)
+- Admin profile cannot be modified
+- Prevents unauthorized changes to system settings on live demos
+- Default is `false` for normal operation
+
+**Note:** Set `DEMO_MODE=false` in production environments where you need full admin access.
+
 ## Integration Guide
 
 ### JavaScript Snippet (Recommended)
