@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+    <name>mod_affiliate_tracker</name>
+    <author>Your Company</author>
+    <creationDate>2025</creationDate>
+    <copyright>Copyright (C) Your Company. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <authorEmail>support@your-domain.com</authorEmail>
+    <authorUrl>https://your-domain.com</authorUrl>
+    <version>1.0.0</version>
+    <description>MOD_AFFILIATE_TRACKER_DESC</description>
+
+    <files>
+        <filename module="mod_affiliate_tracker">mod_affiliate_tracker.php</filename>
+        <folder>tmpl</folder>
+        <folder>language</folder>
+    </files>
+
+    <languages>
+        <language tag="en-GB">language/en-GB/mod_affiliate_tracker.ini</language>
+        <language tag="en-GB">language/en-GB/mod_affiliate_tracker.sys.ini</language>
+    </languages>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="api_url"
+                    type="url"
+                    label="MOD_AFFILIATE_TRACKER_API_URL_LABEL"
+                    description="MOD_AFFILIATE_TRACKER_API_URL_DESC"
+                    default=""
+                />
+                <field
+                    name="api_key"
+                    type="text"
+                    label="MOD_AFFILIATE_TRACKER_API_KEY_LABEL"
+                    description="MOD_AFFILIATE_TRACKER_API_KEY_DESC"
+                    default=""
+                />
+                <field
+                    name="cookie_duration"
+                    type="number"
+                    label="MOD_AFFILIATE_TRACKER_COOKIE_DURATION_LABEL"
+                    description="MOD_AFFILIATE_TRACKER_COOKIE_DURATION_DESC"
+                    default="30"
+                    min="1"
+                    max="365"
+                />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

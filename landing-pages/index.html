@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Affiliate - Jana Pendapatan Dengan Promosi Anda</title>
+    <meta name="description" content="Muat turun & pasang Sistem Affiliate self-hosted untuk laman web anda. Jual produk dengan fungsi affiliate, integrasi multi platform, API lengkap dan analitik masa nyata. Sokongan/pemasangan/customisasi adalah berbayar.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1e40af',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e40af 100%);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">Sistem Affiliate</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-primary transition">Ciri-Ciri</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-primary transition">Cara Berfungsi</a>
+                    <a href="#commission" class="text-gray-600 hover:text-primary transition">Struktur Komisen</a>
+                    <a href="#faq" class="text-gray-600 hover:text-primary transition">Soalan Lazim</a>
+                    <a href="#optin" class="text-gray-600 hover:text-primary transition">Muat Turun</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="https://sitehandy.com/contact" target="_blank" rel="noopener" class="px-5 py-2.5 bg-primary text-white rounded-lg hover:bg-secondary transition font-medium">Hubungi Kami</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg min-h-screen flex items-center pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white animate-fade-in">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        Sistem Affiliate Self-Hosted
+                        <span class="text-yellow-300">Versi Percuma</span>
+                    </h1>
+                    <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+                        Muat turun dan pasang skrip Sistem Affiliate di laman web anda untuk menjual produk dengan fungsi affiliate. Integrasi multi platform dan API lengkap memudahkan sambungan ke e-dagang sedia ada.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <a href="#optin" class="px-8 py-4 bg-white text-primary rounded-xl font-semibold text-lg hover:bg-gray-100 transition text-center shadow-lg">
+                            Dapatkan Link Muat Turun
+                        </a>
+                        <a href="#how-it-works" class="px-8 py-4 border-2 border-white text-white rounded-xl font-semibold text-lg hover:bg-white/10 transition text-center">
+                            Ketahui Lebih Lanjut
+                        </a>
+                    </div>
+                    <div class="flex items-center space-x-8 text-blue-100">
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Percuma Untuk Digunakan</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Kelulusan Segera</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Pembayaran Mingguan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:block animate-fade-in delay-200">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-white/20 rounded-3xl blur-3xl"></div>
+                        <div class="relative bg-white rounded-2xl shadow-2xl p-8 animate-float">
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-lg font-semibold text-gray-900">Your Earnings</h3>
+                                <span class="text-sm text-green-600 bg-green-100 px-3 py-1 rounded-full">+24% this month</span>
+                            </div>
+                            <div class="text-4xl font-bold text-gray-900 mb-2">$4,582.50</div>
+                            <p class="text-gray-500 mb-6">Total earnings this month</p>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                    <span class="text-gray-600">Clicks</span>
+                                    <span class="font-semibold text-gray-900">12,458</span>
+                                </div>
+                                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                    <span class="text-gray-600">Conversions</span>
+                                    <span class="font-semibold text-gray-900">342</span>
+                                </div>
+                                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                    <span class="text-gray-600">Conversion Rate</span>
+                                    <span class="font-semibold text-green-600">2.74%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opt-in Section -->
+    <section id="optin" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Dapatkan Link Muat Turun</h2>
+                <p class="text-lg text-gray-600">Masukkan emel anda. Kami akan hantar link muat turun dan langkah pemasangan.</p>
+            </div>
+            <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6 md:p-8">
+                <form id="optin-form" class="grid md:grid-cols-3 gap-4">
+                    <input type="text" name="name" placeholder="Nama" class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary">
+                    <input type="email" name="email" placeholder="Emel" required class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary md:col-span-2">
+                    <div class="md:col-span-3 flex flex-col sm:flex-row items-center gap-4">
+                        <button type="submit" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-secondary transition font-semibold">
+                            Hantar Link Muat Turun ke Emel Saya
+                        </button>
+                        <p id="optin-status" class="text-sm text-gray-600"></p>
+                    </div>
+                    <p class="md:col-span-3 text-xs text-gray-500">Dengan menghantar emel, anda bersetuju untuk menerima emel berkaitan pemasangan dan kemas kini Sistem Affiliate.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Platforms Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Platform Disokong</h2>
+                <p class="text-gray-600">Integrasi mudah melalui Panduan Integrasi dan API</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+                <div class="text-center animate-fade-in">
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress" class="h-12 w-12 mb-3">
+                        <p class="text-gray-700 font-medium">WordPress</p>
+                        <p class="text-gray-500 text-sm">WooCommerce</p>
+                    </div>
+                </div>
+                <div class="text-center animate-fade-in delay-100">
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center">
+                        <svg class="h-12 w-12 mb-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                        <p class="text-gray-700 font-medium">Shopify</p>
+                        <p class="text-gray-500 text-sm">Checkout Scripts</p>
+                    </div>
+                </div>
+                <div class="text-center animate-fade-in delay-200">
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center">
+                        <svg class="h-12 w-12 mb-3 text-purple-600" viewBox="0 0 24 24" fill="currentColor" aria-label="Joomla logo placeholder">
+                            <rect x="3" y="3" width="8" height="8" rx="2"></rect>
+                            <rect x="13" y="3" width="8" height="8" rx="2"></rect>
+                            <rect x="3" y="13" width="8" height="8" rx="2"></rect>
+                            <rect x="13" y="13" width="8" height="8" rx="2"></rect>
+                        </svg>
+                        <p class="text-gray-700 font-medium">Joomla</p>
+                        <p class="text-gray-500 text-sm">Modul Penjejakan</p>
+                    </div>
+                </div>
+                <div class="text-center animate-fade-in delay-300">
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="Laravel" class="h-12 w-12 mb-3">
+                        <p class="text-gray-700 font-medium">Laravel / PHP</p>
+                        <p class="text-gray-500 text-sm">Middleware & Callback</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Semua Yang Anda Perlukan Untuk Berjaya</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Ciri-ciri berkuasa untuk memaksimumkan pendapatan anda, berpandukan Dokumentasi API dan Panduan Integrasi.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="p-8 bg-white border border-gray-200 rounded-2xl card-hover">
+                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Analitik Masa Nyata</h3>
+                    <p class="text-gray-600">Jejak klik, konversi dan komisen secara masa nyata melalui papan pemuka yang komprehensif.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="p-8 bg-white border border-gray-200 rounded-2xl card-hover">
+                    <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Komisen Kompetitif</h3>
+                    <p class="text-gray-600">Sehingga 50% komisen setiap jualan bergantung program. Lebih banyak jualan, lebih banyak pendapatan.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="p-8 bg-white border border-gray-200 rounded-2xl card-hover">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Link Penjejakan Tersuai</h3>
+                    <p class="text-gray-600">Hasilkan link unik bagi setiap kempen untuk mengukur prestasi dengan tepat.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="p-8 bg-white border border-gray-200 rounded-2xl card-hover">
+                    <div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Tempoh Kuki (Boleh Ubah, Lalai 30 Hari)</h3>
+                    <p class="text-gray-600">Secara lalai 30 hari (boleh ubah). Komisen dikreditkan jika pembelian berlaku dalam tempoh tersebut selepas klik.</p>
+                </div>
+                <!-- Feature 5 -->
+                <div class="p-8 bg-white border border-gray-200 rounded-2xl card-hover">
+                    <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Pilihan Pembayaran Pelbagai</h3>
+                    <p class="text-gray-600">Terima bayaran melalui pindahan bank, e-wallet atau kaedah lain yang sesuai.</p>
+                </div>
+                <!-- Feature 6 -->
+                <div class="p-8 bg-white border border-gray-200 rounded-2xl card-hover">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Integrasi Mudah</h3>
+                    <p class="text-gray-600">Ikuti Panduan Integrasi dan API untuk sambungan pantas ke laman e-dagang anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Cara Berfungsi (Untuk Pemilik Laman)</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Jalankan sistem affiliate di laman anda dalam 3 langkah mudah</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="relative">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold">1</div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Muat Turun Skrip</h3>
+                        <p class="text-gray-600">Masukkan emel di seksyen <a href="#optin" class="text-primary hover:underline">Muat Turun</a> untuk menerima link muat turun dan panduan pemasangan.</p>
+                    </div>
+                    <div class="hidden md:block absolute top-10 left-[60%] w-[80%] h-0.5 bg-gray-300"></div>
+                </div>
+                <!-- Step 2 -->
+                <div class="relative">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold">2</div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Pasang & Konfigurasi</h3>
+                        <p class="text-gray-600">Pasang di server anda, tetapkan program, komisen, kuki (boleh ubah, lalai 30 hari), dan integrasi mengikut <span class="font-semibold">Panduan Integrasi</span>.</p>
+                    </div>
+                    <div class="hidden md:block absolute top-10 left-[60%] w-[80%] h-0.5 bg-gray-300"></div>
+                </div>
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold">3</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Mula Jual & Jejak</h3>
+                    <p class="text-gray-600">Jalankan kempen anda. Sistem akan menjejak klik, konversi dan komisen secara automatik melalui API.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commission Structure -->
+    <section id="commission" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Model Komisen Disokong</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Tetapkan sendiri kadar komisen mengikut program, produk atau kempen anda</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Pay Per Sale -->
+                <div class="bg-white border-2 border-gray-200 rounded-2xl p-8 text-center card-hover">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Bayar Per Jualan</h3>
+                    <div class="text-5xl font-bold text-green-600 my-6">Fleksibel</div>
+                    <p class="text-gray-600 mb-6">Tetapkan komisen peratusan atau amaun tetap bagi setiap jualan</p>
+                    <ul class="text-left text-gray-600 space-y-3">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Komisen berdasarkan nilai keseluruhan troli
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Penjejakan kuki (boleh ubah, lalai 30 hari)
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Sokongan komisen berulang jika ditetapkan
+                        </li>
+                    </ul>
+                </div>
+                <!-- Pay Per Lead -->
+                <div class="bg-white border-2 border-primary rounded-2xl p-8 text-center card-hover relative">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold">Most Popular</div>
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Bayar Per Lead</h3>
+                    <div class="text-5xl font-bold text-primary my-6">Fleksibel</div>
+                    <p class="text-gray-600 mb-6">Tetapkan amaun tetap bagi setiap lead layak (borang diisi/opt-in)</p>
+                    <ul class="text-left text-gray-600 space-y-3">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Bayaran tetap bagi setiap lead layak
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Tidak memerlukan pembelian
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Kadar penukaran lebih tinggi
+                        </li>
+                    </ul>
+                </div>
+                <!-- Pay Per View -->
+                <div class="bg-white border-2 border-gray-200 rounded-2xl p-8 text-center card-hover">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Bayar Per Paparan</h3>
+                    <div class="text-5xl font-bold text-purple-600 my-6">Fleksibel</div>
+                    <p class="text-gray-600 mb-6">Tetapkan kadar bagi setiap paparan unik (kempen awareness/CPM)</p>
+                    <ul class="text-left text-gray-600 space-y-3">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Pendapatan segera bagi setiap klik unik
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Sesuai untuk laman trafik tinggi
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Boleh digabung dengan model lain
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Testimoni</h2>
+                <p class="text-xl text-gray-600">Testimonial anda akan berada di sini</p>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white p-12 rounded-2xl shadow-lg border border-dashed border-gray-300 text-center">
+                    <p class="text-gray-600">Tiada testimoni diterbitkan buat masa ini. Hantar pengalaman anda selepas menggunakan Sistem Affiliate untuk dipaparkan di sini.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Soalan Lazim</h2>
+                <p class="text-xl text-gray-600">Maklumat penting tentang skrip Sistem Affiliate self-hosted</p>
+            </div>
+            <div class="space-y-4" x-data="{ open: null }">
+                <!-- FAQ Item 1 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                        <span class="font-semibold text-gray-900">Bagaimana untuk muat turun dan memasang skrip?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4">
+                        <p class="text-gray-600">Pergi ke seksyen <a href="#optin" class="text-primary hover:underline">Muat Turun</a> dan masukkan emel anda. Kami akan hantar link muat turun serta langkah pemasangan. Rujuk <code class="px-1 py-0.5 bg-gray-100 rounded">docs/integration-guide.md</code> untuk konfigurasi.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                        <span class="font-semibold text-gray-900">Bagaimana pembayaran kepada affiliate diurus?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4">
+                        <p class="text-gray-600">Sistem menyediakan rekod komisen dan laporan. Anda menetapkan ambang minimum dan kaedah pembayaran (contoh pindahan bank, e-wallet) dan memproses pembayaran mengikut polisi anda.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                        <span class="font-semibold text-gray-900">Berapa lama tempoh kuki penjejakan?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4">
+                        <p class="text-gray-600">Secara lalai 30 hari. Anda boleh ubah mengikut keperluan program. Jika pelanggan membeli dalam tempoh tersebut selepas klik link, komisen akan dikreditkan kepada affiliate.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 4 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                        <span class="font-semibold text-gray-900">Platform apa yang disokong untuk integrasi?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4">
+                        <p class="text-gray-600">Sistem menyokong integrasi pelbagai platform (contoh WordPress/WooCommerce, Shopify, laman PHP tersuai) melalui API dan callback. Rujuk <code class="px-1 py-0.5 bg-gray-100 rounded">docs/integration-guide.md</code> untuk contoh.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 5 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                        <span class="font-semibold text-gray-900">Ada kos untuk guna skrip ini?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4">
+                        <p class="text-gray-600">Versi percuma adalah self-hosted tanpa yuran bulanan. Caj hanya dikenakan jika anda perlukan sokongan, pemasangan atau customisasi. Versi percuma mungkin terhad masa sebelum menjadi berbayar.</p>
+                    </div>
+                </div>
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                        <span class="font-semibold text-gray-900">Apakah keperluan server dan pemasangan?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4">
+                        <p class="text-gray-600">Sokongan tipikal: PHP dan pangkalan data (contoh MySQL), akses SSH/FTP dan domain. Ikuti langkah di <code class="px-1 py-0.5 bg-gray-100 rounded">docs/</code> untuk pemasangan, konfigurasi env, dan build aset.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 gradient-bg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Muat Turun Skrip Affiliate Self-Hosted Percuma</h2>
+            <p class="text-xl text-blue-100 mb-8">Dapatkan link muat turun skrip affiliate self-hosted percuma hari ini.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#optin" class="px-8 py-4 bg-white text-primary rounded-xl font-semibold text-lg hover:bg-gray-100 transition shadow-lg">
+                    Dapatkan Link Muat Turun
+                </a>
+                <a href="https://sitehandy.com/contact" target="_blank" rel="noopener" class="px-8 py-4 border-2 border-white text-white rounded-xl font-semibold text-lg hover:bg-white/10 transition">
+                    Hubungi Kami
+                </a>
+            </div>
+            <div class="mt-6 text-blue-100 text-sm">
+                Rujukan asal: versi awal sistem ini dikenali sebagai "Sistem Affiliate Lite" (rujuk carian Google).
+            </div>
+        </div>
+    </section>
+
+    <section id="disclaimer" class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white border border-gray-200 rounded-2xl p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Penafian & Terma Versi Percuma</h3>
+                <ul class="space-y-3 text-gray-700">
+                    <li class="flex items-start">
+                        <span class="inline-flex w-6 h-6 items-center justify-center rounded-full bg-primary text-white mr-3 text-sm">1</span>
+                        Sistem ini ditawarkan sebagai self-hosted versi percuma untuk kegunaan anda sendiri.
+                    </li>
+                    <li class="flex items-start">
+                        <span class="inline-flex w-6 h-6 items-center justify-center rounded-full bg-primary text-white mr-3 text-sm">2</span>
+                        Tiada jaminan sokongan teknikal bagi versi percuma. Penggunaan adalah atas risiko anda sendiri.
+                    </li>
+                    <li class="flex items-start">
+                        <span class="inline-flex w-6 h-6 items-center justify-center rounded-full bg-primary text-white mr-3 text-sm">3</span>
+                        Sokongan, pemasangan dan customisasi tersedia sebagai perkhidmatan berbayar. Caj akan dikenakan mengikut skop.
+                    </li>
+                    <li class="flex items-start">
+                        <span class="inline-flex w-6 h-6 items-center justify-center rounded-full bg-primary text-white mr-3 text-sm">4</span>
+                        Versi percuma mungkin ditawarkan untuk masa terhad dan boleh ditukar kepada versi berbayar pada masa hadapan.
+                    </li>
+                    <li class="flex items-start">
+                        <span class="inline-flex w-6 h-6 items-center justify-center rounded-full bg-primary text-white mr-3 text-sm">5</span>
+                        Rujuk dokumentasi dalam folder <code class="px-1 py-0.5 bg-gray-100 rounded">docs/</code> termasuk <code class="px-1 py-0.5 bg-gray-100 rounded">api.md</code> dan <code class="px-1 py-0.5 bg-gray-100 rounded">integration-guide.md</code> untuk pemasangan dan integrasi.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold text-white">Sistem Affiliate</span>
+                    </div>
+                    <p class="text-sm">Platform affiliate self-hosted untuk peniaga, pencipta kandungan dan pemasar.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Pautan Pantas</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#features" class="hover:text-white transition">Ciri-Ciri</a></li>
+                        <li><a href="#how-it-works" class="hover:text-white transition">Cara Berfungsi</a></li>
+                        <li><a href="#commission" class="hover:text-white transition">Struktur Komisen</a></li>
+                        <li><a href="#faq" class="hover:text-white transition">Soalan Lazim</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Sokongan</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Pusat Bantuan</a></li>
+                        <li><a href="https://sitehandy.com/contact" target="_blank" rel="noopener" class="hover:text-white transition">Hubungi Kami</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terma Perkhidmatan</a></li>
+                        <li><a href="#" class="hover:text-white transition">Dasar Privasi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Ikuti Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-sm">
+                <p>&copy; <span id="year"></span> Sistem Affiliate. Hak cipta terpelihara.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('.faq-icon');
+
+                // Close all other FAQs
+                document.querySelectorAll('.faq-content').forEach(item => {
+                    if (item !== content) {
+                        item.classList.add('hidden');
+                        item.previousElementSibling.querySelector('.faq-icon').classList.remove('rotate-180');
+                    }
+                });
+
+                // Toggle current FAQ
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.remove('shadow-md');
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card-hover').forEach(el => {
+            observer.observe(el);
+        });
+
+        const optinForm = document.getElementById('optin-form');
+        if (optinForm) {
+            optinForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const status = document.getElementById('optin-status');
+                const email = this.querySelector('input[name="email"]').value.trim();
+                const name = this.querySelector('input[name="name"]').value.trim();
+                const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+                if (!valid) {
+                    status.textContent = 'Sila masukkan emel yang sah.';
+                    status.classList.remove('text-green-600');
+                    status.classList.add('text-red-600');
+                    return;
+                }
+                status.textContent = 'Terima kasih! Kami akan emelkan link muat turun seketika.';
+                status.classList.remove('text-red-600');
+                status.classList.add('text-green-600');
+                this.querySelector('button[type="submit"]').disabled = true;
+                this.querySelector('button[type="submit"]').classList.add('opacity-60');
+            });
+        }
+    </script>
+</body>
+</html>
