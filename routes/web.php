@@ -214,3 +214,35 @@ Route::get('/artisan/migrate', function () {
     Artisan::call('migrate', ['--force' => true]);
     return 'Migrations run successfully.';
 })->name('artisan.migrate');
+
+// Emergency cache clear routes for shared hosting
+// Access: /artisan/clear-cache?key=YOUR_APP_KEY
+Route::get('/artisan/clear-cache', function () {
+    $key = request('key');
+    if ($key !== config('app.key')) {
+        abort(403, 'Invalid key');
+    }
+    
+    Artisan::call('config:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    Artisan::call('cache:clear');
+    
+    return 'All cache cleared successfully. Routes should now work.';
+})->name('artisan.clear-cache');
+
+Route::get('/artisan/optimize', function () {
+    $key = request('key');
+    if ($key !== config('app.key')) {
+        abort(403, 'Invalid key');
+    }
+    
+    Artisan::call('config:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('route:cache');
+    
+    return 'Cache cleared and optimized for production.';
+})->name('artisan.optimize');
