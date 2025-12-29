@@ -6,12 +6,57 @@ Panduan ini menerangkan cara untuk mengemaskini Sistem Affiliate ke versi terbar
 
 Untuk pengguna yang tidak mempunyai akses SSH atau terminal, sistem menyediakan antaramuka web untuk upgrade.
 
-### Langkah-langkah:
+### Aliran Kerja Upgrade
 
-1. **Log masuk sebagai Admin**
+```
+┌─────────────────────────────────────────────────────────────┐
+│  LANGKAH 1: Upload Fail Baru (Manual)                       │
+│  - Download versi terbaru (zip dari GitHub)                 │
+│  - Upload/overwrite ke server via FTP/File Manager          │
+│  - JANGAN overwrite: .env, storage/installed                │
+└─────────────────────────────────────────────────────────────┘
+                            ↓
+┌─────────────────────────────────────────────────────────────┐
+│  LANGKAH 2: Klik "Run System Upgrade" (Web UI)              │
+│  - Jalankan pending migrations                              │
+│  - Clear semua cache                                        │
+│  - Update version dalam database                            │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Apa yang Web UI Upgrade Buat:
+- ✅ Jalankan migration baru
+- ✅ Clear cache (config, route, view, app)
+- ✅ Update version record dalam database
+
+### Apa yang Web UI Upgrade TIDAK Buat:
+- ❌ Download fail terbaru dari GitHub
+- ❌ Upload/overwrite fail secara automatik
+- ❌ Update dependencies (composer)
+
+> **Penting:** Web UI hanya menjalankan migration dan clear cache. Ia TIDAK memuat turun fail secara automatik. Anda MESTI upload fail baru terlebih dahulu sebelum klik butang upgrade.
+
+---
+
+### Langkah-langkah Terperinci:
+
+1. **Download Versi Terbaru**
+   - Pergi ke GitHub: `https://github.com/sitehandy/sistemaffiliatelite`
+   - Klik **Code** → **Download ZIP**
+   - Extract fail zip
+
+2. **Upload Fail ke Server**
+   - Guna FTP client (FileZilla) atau cPanel File Manager
+   - Upload/overwrite semua fail **KECUALI**:
+     - `.env` (konfigurasi anda)
+     - `storage/installed` (marker pemasangan)
+     - `storage/app/` (fail uploads pengguna)
+     - `storage/logs/` (log files)
+
+3. **Log masuk sebagai Admin**
    - Pastikan anda log masuk dengan akaun admin
 
-2. **Akses Halaman Upgrade**
+4. **Akses Halaman Upgrade**
    - Pergi ke **Settings** → **System Upgrade** di sidebar
    - Atau akses terus: `https://yourdomain.com/admin/upgrade`
 

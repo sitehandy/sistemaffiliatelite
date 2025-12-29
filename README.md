@@ -261,14 +261,35 @@ For detailed integration guides (WooCommerce, Shopify, Laravel), see **Admin Pan
 
 If you don't have SSH/terminal access:
 
-1. **Upload New Files**
-   - Download the latest version
-   - Upload new files to your server (keep your `.env` and `storage/` folder)
+```
+┌─────────────────────────────────────────────────────────────┐
+│  STEP 1: Upload New Files (Manual)                          │
+│  - Download latest version (zip from GitHub)                │
+│  - Upload/overwrite to server via FTP/File Manager          │
+│  - DO NOT overwrite: .env, storage/installed                │
+└─────────────────────────────────────────────────────────────┘
+                            ↓
+┌─────────────────────────────────────────────────────────────┐
+│  STEP 2: Click "Run System Upgrade" (Web UI)                │
+│  - Run pending database migrations                          │
+│  - Clear all cache                                          │
+│  - Update version in database                               │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Detailed Steps:**
+
+1. **Upload New Files First**
+   - Download the latest version from GitHub
+   - Upload/overwrite files to your server via FTP or cPanel File Manager
+   - **DO NOT overwrite:** `.env`, `storage/installed`, and `storage/` folder contents
 
 2. **Run Upgrade via Web UI**
    - Login as Admin
    - Go to **Settings > System Upgrade**
    - Click **"Run System Upgrade"** to run pending migrations and clear cache
+
+> **Important:** The Web UI only runs migrations and clears cache. It does NOT download files automatically. You must upload the new files first before clicking upgrade.
 
 ### Developer Upgrade (Terminal)
 
