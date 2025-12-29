@@ -255,6 +255,44 @@ $response = Http::post('https://yourdomain.com/api/track/conversion', [
 
 For detailed integration guides (WooCommerce, Shopify, Laravel), see **Admin Panel > Integration Guide**.
 
+## Upgrading
+
+### Web UI Upgrade (Recommended for Shared Hosting)
+
+If you don't have SSH/terminal access:
+
+1. **Upload New Files**
+   - Download the latest version
+   - Upload new files to your server (keep your `.env` and `storage/` folder)
+
+2. **Run Upgrade via Web UI**
+   - Login as Admin
+   - Go to **Settings > System Upgrade**
+   - Click **"Run System Upgrade"** to run pending migrations and clear cache
+
+### Developer Upgrade (Terminal)
+
+```bash
+# Pull latest changes
+git pull origin master
+
+# Update dependencies
+composer install --no-dev --optimize-autoloader
+
+# Run migrations
+php artisan migrate --force
+
+# Clear cache
+php artisan optimize:clear
+
+# Rebuild cache (production)
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+For detailed upgrade instructions, see [docs/upgrade-guide.md](docs/upgrade-guide.md).
+
 ## Folder Structure
 
 ```
