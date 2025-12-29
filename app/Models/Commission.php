@@ -10,6 +10,19 @@ class Commission extends Model
 {
     use HasFactory;
 
+    // Status Constants
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_APPROVED = 'approved';
+    public const STATUS_PAID = 'paid';
+    public const STATUS_CANCELLED = 'cancelled';
+
+    public const STATUSES = [
+        self::STATUS_PENDING,
+        self::STATUS_APPROVED,
+        self::STATUS_PAID,
+        self::STATUS_CANCELLED,
+    ];
+
     protected $fillable = [
         'user_id',
         'conversion_id',
@@ -36,56 +49,56 @@ class Commission extends Model
 
     public function isPending(): bool
     {
-        return $this->status === 'pending';
+        return $this->status === self::STATUS_PENDING;
     }
 
     public function isApproved(): bool
     {
-        return $this->status === 'approved';
+        return $this->status === self::STATUS_APPROVED;
     }
 
     public function isPaid(): bool
     {
-        return $this->status === 'paid';
+        return $this->status === self::STATUS_PAID;
     }
 
     public function isCancelled(): bool
     {
-        return $this->status === 'cancelled';
+        return $this->status === self::STATUS_CANCELLED;
     }
 
     public function approve(): void
     {
-        $this->update(['status' => 'approved']);
+        $this->update(['status' => self::STATUS_APPROVED]);
     }
 
     public function markAsPaid(): void
     {
-        $this->update(['status' => 'paid']);
+        $this->update(['status' => self::STATUS_PAID]);
     }
 
     public function cancel(): void
     {
-        $this->update(['status' => 'cancelled']);
+        $this->update(['status' => self::STATUS_CANCELLED]);
     }
 
     public function scopePending($query)
     {
-        return $query->where('status', 'pending');
+        return $query->where('status', self::STATUS_PENDING);
     }
 
     public function scopeApproved($query)
     {
-        return $query->where('status', 'approved');
+        return $query->where('status', self::STATUS_APPROVED);
     }
 
     public function scopePaid($query)
     {
-        return $query->where('status', 'paid');
+        return $query->where('status', self::STATUS_PAID);
     }
 
     public function scopePayable($query)
     {
-        return $query->where('status', 'approved');
+        return $query->where('status', self::STATUS_APPROVED);
     }
 }

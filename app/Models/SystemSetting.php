@@ -7,6 +7,19 @@ use Illuminate\Support\Facades\Cache;
 
 class SystemSetting extends Model
 {
+    // Type Constants
+    public const TYPE_STRING = 'string';
+    public const TYPE_INTEGER = 'integer';
+    public const TYPE_BOOLEAN = 'boolean';
+    public const TYPE_JSON = 'json';
+
+    public const TYPES = [
+        self::TYPE_STRING,
+        self::TYPE_INTEGER,
+        self::TYPE_BOOLEAN,
+        self::TYPE_JSON,
+    ];
+
     protected $fillable = [
         'key',
         'value',

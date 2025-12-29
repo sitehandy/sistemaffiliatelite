@@ -12,6 +12,17 @@ class PaymentMethod extends Model
 {
     use HasFactory;
 
+    // Payment Method Types
+    public const TYPE_BANK = 'bank';
+    public const TYPE_PAYPAL = 'paypal';
+    public const TYPE_WISE = 'wise';
+
+    public const TYPES = [
+        self::TYPE_BANK,
+        self::TYPE_PAYPAL,
+        self::TYPE_WISE,
+    ];
+
     protected $fillable = [
         'user_id',
         'type',
@@ -41,17 +52,17 @@ class PaymentMethod extends Model
 
     public function isBank(): bool
     {
-        return $this->type === 'bank';
+        return $this->type === self::TYPE_BANK;
     }
 
     public function isPaypal(): bool
     {
-        return $this->type === 'paypal';
+        return $this->type === self::TYPE_PAYPAL;
     }
 
     public function isWise(): bool
     {
-        return $this->type === 'wise';
+        return $this->type === self::TYPE_WISE;
     }
 
     protected function maskedDetails(): Attribute
@@ -61,14 +72,14 @@ class PaymentMethod extends Model
                 $details = $this->details ?? [];
 
                 return match ($this->type) {
-                    'bank' => [
+                    self::TYPE_BANK => [
                         'bank_name' => $details['bank_name'] ?? '',
                         'account_number' => $this->maskString($details['account_number'] ?? ''),
                     ],
-                    'paypal' => [
+                    self::TYPE_PAYPAL => [
                         'email' => $this->maskEmail($details['email'] ?? ''),
                     ],
-                    'wise' => [
+                    self::TYPE_WISE => [
                         'email' => $this->maskEmail($details['email'] ?? ''),
                     ],
                     default => [],

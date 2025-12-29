@@ -8,6 +8,19 @@ use Illuminate\Database\Eloquent\Builder;
 
 class Announcement extends Model
 {
+    // Type Constants
+    public const TYPE_INFO = 'info';
+    public const TYPE_WARNING = 'warning';
+    public const TYPE_SUCCESS = 'success';
+    public const TYPE_DANGER = 'danger';
+
+    public const TYPES = [
+        self::TYPE_INFO,
+        self::TYPE_WARNING,
+        self::TYPE_SUCCESS,
+        self::TYPE_DANGER,
+    ];
+
     protected $fillable = [
         'title',
         'content',

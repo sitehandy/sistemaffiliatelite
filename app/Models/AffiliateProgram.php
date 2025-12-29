@@ -13,6 +13,35 @@ class AffiliateProgram extends Model
 {
     use HasFactory;
 
+    // Program Types
+    public const PROGRAM_TYPE_SALE = 'sale';
+    public const PROGRAM_TYPE_VIEW = 'view';
+    public const PROGRAM_TYPE_LEAD = 'lead';
+
+    public const PROGRAM_TYPES = [
+        self::PROGRAM_TYPE_SALE,
+        self::PROGRAM_TYPE_VIEW,
+        self::PROGRAM_TYPE_LEAD,
+    ];
+
+    // Commission Types
+    public const COMMISSION_TYPE_FLAT = 'flat';
+    public const COMMISSION_TYPE_PERCENTAGE = 'percentage';
+
+    public const COMMISSION_TYPES = [
+        self::COMMISSION_TYPE_FLAT,
+        self::COMMISSION_TYPE_PERCENTAGE,
+    ];
+
+    // Visibility
+    public const VISIBILITY_HIDDEN = 'hidden';
+    public const VISIBILITY_OPEN = 'open';
+
+    public const VISIBILITIES = [
+        self::VISIBILITY_HIDDEN,
+        self::VISIBILITY_OPEN,
+    ];
+
     protected $fillable = [
         'name',
         'description',
@@ -37,7 +66,7 @@ class AffiliateProgram extends Model
     protected static function booted(): void
     {
         static::creating(function (AffiliateProgram $program) {
-            if ($program->visibility === 'hidden' && !$program->invitation_code) {
+            if ($program->visibility === self::VISIBILITY_HIDDEN && !$program->invitation_code) {
                 $program->invitation_code = Str::random(16);
             }
         });
@@ -79,22 +108,22 @@ class AffiliateProgram extends Model
     public function approvedAffiliates()
     {
         return $this->belongsToMany(User::class, 'program_enrollments', 'program_id', 'user_id')
-            ->wherePivot('status', 'approved');
+            ->wherePivot('status', ProgramEnrollment::STATUS_APPROVED);
     }
 
     public function isOpen(): bool
     {
-        return $this->visibility === 'open';
+        return $this->visibility === self::VISIBILITY_OPEN;
     }
 
     public function isHidden(): bool
     {
-        return $this->visibility === 'hidden';
+        return $this->visibility === self::VISIBILITY_HIDDEN;
     }
 
     public function calculateCommission(float $value): float
     {
-        if ($this->commission_type === 'flat') {
+        if ($this->commission_type === self::COMMISSION_TYPE_FLAT) {
             return (float) $this->commission_amount;
         }
 

@@ -10,6 +10,19 @@ class Payout extends Model
 {
     use HasFactory;
 
+    // Status Constants
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_PROCESSING = 'processing';
+    public const STATUS_COMPLETED = 'completed';
+    public const STATUS_FAILED = 'failed';
+
+    public const STATUSES = [
+        self::STATUS_PENDING,
+        self::STATUS_PROCESSING,
+        self::STATUS_COMPLETED,
+        self::STATUS_FAILED,
+    ];
+
     protected $fillable = [
         'user_id',
         'total_amount',
@@ -47,60 +60,60 @@ class Payout extends Model
 
     public function isPending(): bool
     {
-        return $this->status === 'pending';
+        return $this->status === self::STATUS_PENDING;
     }
 
     public function isProcessing(): bool
     {
-        return $this->status === 'processing';
+        return $this->status === self::STATUS_PROCESSING;
     }
 
     public function isCompleted(): bool
     {
-        return $this->status === 'completed';
+        return $this->status === self::STATUS_COMPLETED;
     }
 
     public function isFailed(): bool
     {
-        return $this->status === 'failed';
+        return $this->status === self::STATUS_FAILED;
     }
 
     public function startProcessing(): void
     {
-        $this->update(['status' => 'processing']);
+        $this->update(['status' => self::STATUS_PROCESSING]);
     }
 
     public function complete(string $transactionReference = null): void
     {
         $this->update([
-            'status' => 'completed',
+            'status' => self::STATUS_COMPLETED,
             'transaction_reference' => $transactionReference,
             'processed_at' => now(),
         ]);
 
-        $this->commissions()->update(['status' => 'paid']);
+        $this->commissions()->update(['status' => Commission::STATUS_PAID]);
     }
 
     public function fail(string $notes = null): void
     {
         $this->update([
-            'status' => 'failed',
+            'status' => self::STATUS_FAILED,
             'notes' => $notes,
         ]);
     }
 
     public function scopePending($query)
     {
-        return $query->where('status', 'pending');
+        return $query->where('status', self::STATUS_PENDING);
     }
 
     public function scopeProcessing($query)
     {
-        return $query->where('status', 'processing');
+        return $query->where('status', self::STATUS_PROCESSING);
     }
 
     public function scopeCompleted($query)
     {
-        return $query->where('status', 'completed');
+        return $query->where('status', self::STATUS_COMPLETED);
     }
 }

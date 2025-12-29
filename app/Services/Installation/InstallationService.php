@@ -260,6 +260,7 @@ class InstallationService
                 ['key' => 'auto_approve_enrollments', 'value' => '0', 'type' => 'boolean', 'is_public' => false],
                 ['key' => 'auto_approve_commissions', 'value' => '0', 'type' => 'boolean', 'is_public' => false],
                 ['key' => 'payout_schedule', 'value' => 'monthly', 'type' => 'string', 'is_public' => false],
+                ['key' => 'app_version', 'value' => config('version.current', '1.0.0'), 'type' => 'string', 'is_public' => true],
             ];
 
             foreach ($defaultSettings as $setting) {

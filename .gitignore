@@ -19,6 +19,16 @@
 /storage/*.key
 /storage/pail
 /vendor
+
+# Installation marker (indicates system is installed)
+/storage/installed
+
+# Compiled views (auto-generated)
+/storage/framework/views/*.php
+
+# Landing pages config (contains API keys)
+/landing-pages/config.php
+
 Homestead.json
 Homestead.yaml
 Thumbs.db

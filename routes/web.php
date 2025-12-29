@@ -1,27 +1,29 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\InstallController;
 use App\Http\Controllers\Web\AuthController;
 use App\Http\Controllers\Web\ProfileController;
-use App\Http\Controllers\Web\Admin\DashboardController as AdminDashboardController;
-use App\Http\Controllers\Web\Admin\ProgramController as AdminProgramController;
-use App\Http\Controllers\Web\Admin\ProductController as AdminProductController;
-use App\Http\Controllers\Web\Admin\EnrollmentController as AdminEnrollmentController;
-use App\Http\Controllers\Web\Admin\CommissionController as AdminCommissionController;
+use App\Http\Controllers\Api\TrackingController;
 use App\Http\Controllers\Web\Admin\PayoutController as AdminPayoutController;
 use App\Http\Controllers\Web\Admin\ReportController as AdminReportController;
+use App\Http\Controllers\Web\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Web\Admin\ProgramController as AdminProgramController;
 use App\Http\Controllers\Web\Admin\SettingController as AdminSettingController;
-use App\Http\Controllers\Web\Admin\AffiliateController as AdminAffiliateController;
-use App\Http\Controllers\Web\Admin\AnnouncementController as AdminAnnouncementController;
-use App\Http\Controllers\Web\Admin\IntegrationGuideController as AdminIntegrationGuideController;
-use App\Http\Controllers\Web\Admin\EnvSettingsController as AdminEnvSettingsController;
-use App\Http\Controllers\Web\Affiliate\DashboardController as AffiliateDashboardController;
-use App\Http\Controllers\Web\Affiliate\ProgramController as AffiliateProgramController;
+use App\Http\Controllers\Web\Admin\UpgradeController as AdminUpgradeController;
 use App\Http\Controllers\Web\Affiliate\LinkController as AffiliateLinkController;
-use App\Http\Controllers\Web\Affiliate\CommissionController as AffiliateCommissionController;
+use App\Http\Controllers\Web\Admin\AffiliateController as AdminAffiliateController;
+use App\Http\Controllers\Web\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Web\Admin\CommissionController as AdminCommissionController;
+use App\Http\Controllers\Web\Admin\EnrollmentController as AdminEnrollmentController;
 use App\Http\Controllers\Web\Affiliate\PayoutController as AffiliatePayoutController;
-use App\Http\Controllers\Api\TrackingController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\Admin\EnvSettingsController as AdminEnvSettingsController;
+use App\Http\Controllers\Web\Affiliate\ProgramController as AffiliateProgramController;
+use App\Http\Controllers\Web\Admin\AnnouncementController as AdminAnnouncementController;
+use App\Http\Controllers\Web\Affiliate\DashboardController as AffiliateDashboardController;
+use App\Http\Controllers\Web\Affiliate\CommissionController as AffiliateCommissionController;
+use App\Http\Controllers\Web\Admin\IntegrationGuideController as AdminIntegrationGuideController;
 
 // Installation routes
 Route::prefix('install')->group(function () {
@@ -160,6 +162,13 @@ Route::middleware('auth')->group(function () {
 
         // Integration Guide
         Route::get('integration-guide', [AdminIntegrationGuideController::class, 'index'])->name('integration-guide.index');
+
+        // System Upgrade
+        Route::get('upgrade', [AdminUpgradeController::class, 'index'])->name('upgrade.index');
+        Route::get('upgrade/check', [AdminUpgradeController::class, 'check'])->name('upgrade.check');
+        Route::post('upgrade/run', [AdminUpgradeController::class, 'run'])->middleware('demo_mode')->name('upgrade.run');
+        Route::post('upgrade/migrate', [AdminUpgradeController::class, 'migrate'])->middleware('demo_mode')->name('upgrade.migrate');
+        Route::post('upgrade/clear-cache', [AdminUpgradeController::class, 'clearCache'])->name('upgrade.clear-cache');
     });
 
     // Affiliate routes
@@ -198,3 +207,10 @@ Route::middleware('auth')->group(function () {
         Route::delete('payment-methods/{paymentMethod}', [AffiliatePayoutController::class, 'deletePaymentMethod'])->name('payment-methods.destroy');
     });
 });
+
+
+
+Route::get('/artisan/migrate', function () {
+    Artisan::call('migrate', ['--force' => true]);
+    return 'Migrations run successfully.';
+})->name('artisan.migrate');

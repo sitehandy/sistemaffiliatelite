@@ -6,6 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class InstallationLog extends Model
 {
+    // Status Constants
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_COMPLETED = 'completed';
+    public const STATUS_FAILED = 'failed';
+
+    public const STATUSES = [
+        self::STATUS_PENDING,
+        self::STATUS_COMPLETED,
+        self::STATUS_FAILED,
+    ];
+
     public $timestamps = false;
 
     protected $fillable = [
@@ -26,23 +37,23 @@ class InstallationLog extends Model
 
     public function isPending(): bool
     {
-        return $this->status === 'pending';
+        return $this->status === self::STATUS_PENDING;
     }
 
     public function isCompleted(): bool
     {
-        return $this->status === 'completed';
+        return $this->status === self::STATUS_COMPLETED;
     }
 
     public function isFailed(): bool
     {
-        return $this->status === 'failed';
+        return $this->status === self::STATUS_FAILED;
     }
 
     public function complete(string $message = null, array $details = null): void
     {
         $this->update([
-            'status' => 'completed',
+            'status' => self::STATUS_COMPLETED,
             'message' => $message,
             'details' => $details,
         ]);
@@ -51,7 +62,7 @@ class InstallationLog extends Model
     public function fail(string $message = null, array $details = null): void
     {
         $this->update([
-            'status' => 'failed',
+            'status' => self::STATUS_FAILED,
             'message' => $message,
             'details' => $details,
         ]);

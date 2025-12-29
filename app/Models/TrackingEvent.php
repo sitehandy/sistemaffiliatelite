@@ -11,6 +11,17 @@ class TrackingEvent extends Model
 {
     use HasFactory;
 
+    // Event Types
+    public const EVENT_TYPE_CLICK = 'click';
+    public const EVENT_TYPE_VIEW = 'view';
+    public const EVENT_TYPE_CONVERSION = 'conversion';
+
+    public const EVENT_TYPES = [
+        self::EVENT_TYPE_CLICK,
+        self::EVENT_TYPE_VIEW,
+        self::EVENT_TYPE_CONVERSION,
+    ];
+
     public $timestamps = false;
 
     protected $fillable = [
@@ -43,16 +54,16 @@ class TrackingEvent extends Model
 
     public function isClick(): bool
     {
-        return $this->event_type === 'click';
+        return $this->event_type === self::EVENT_TYPE_CLICK;
     }
 
     public function isView(): bool
     {
-        return $this->event_type === 'view';
+        return $this->event_type === self::EVENT_TYPE_VIEW;
     }
 
     public function isConversion(): bool
     {
-        return $this->event_type === 'conversion';
+        return $this->event_type === self::EVENT_TYPE_CONVERSION;
     }
 }
